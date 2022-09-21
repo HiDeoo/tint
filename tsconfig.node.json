@@ -1,0 +1,7 @@
+{
+  "extends": "@hideoo/tsconfig",
+  "compilerOptions": {
+    "composite": true
+  },
+  "include": ["vite.config.ts"]
+}
