@@ -34,7 +34,6 @@ export default defineConfig({
         short_name: '// TODO',
         theme_color: '#ffffff',
       },
-      registerType: 'autoUpdate',
     }),
   ],
 })
