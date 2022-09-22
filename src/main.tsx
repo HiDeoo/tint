@@ -1,8 +1,13 @@
-import 'uno.css'
+import 'virtual:uno.css'
 import '@unocss/reset/tailwind.css'
 
-import { render } from 'preact'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
 
 import { App } from './components/App'
 
-render(<App />, document.querySelector('#app') as HTMLElement)
+ReactDOM.createRoot(document.querySelector('#app') as HTMLElement).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+)

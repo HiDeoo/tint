@@ -14,15 +14,18 @@
   },
   "dependencies": {
     "@unocss/reset": "0.45.22",
-    "preact": "10.11.0"
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@babel/core": "7.19.1",
     "@hideoo/eslint-config": "0.8.0",
     "@hideoo/prettier-config": "0.1.1",
     "@hideoo/tsconfig": "0.1.0",
-    "@preact/preset-vite": "2.4.0",
+    "@types/react": "18.0.20",
+    "@types/react-dom": "18.0.6",
     "@unocss/preset-attributify": "0.45.22",
+    "@vitejs/plugin-react": "2.1.0",
     "eslint": "8.23.1",
     "husky": "8.0.1",
     "lint-staged": "13.0.3",

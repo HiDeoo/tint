@@ -1,9 +1,6 @@
 {
   "extends": "@hideoo/tsconfig",
   "compilerOptions": {
-    "jsx": "preserve",
-    "jsxFactory": "h",
-    "jsxFragmentFactory": "Fragment",
     "noEmit": true,
     "types": ["vite-plugin-pwa/client"]
   },

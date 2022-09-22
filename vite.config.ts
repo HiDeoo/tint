@@ -1,4 +1,4 @@
-import preact from '@preact/preset-vite'
+import react from '@vitejs/plugin-react'
 import { presetAttributify, presetUno } from 'unocss'
 import Unocss from 'unocss/vite'
 import { defineConfig } from 'vite'
@@ -14,7 +14,7 @@ export default defineConfig({
         },
       },
     }),
-    preact(),
+    react(),
     VitePWA({
       includeAssets: ['images/favicon.ico', 'images/apple-touch-icon.png', 'images/masked-icon.svg'],
       manifest: {

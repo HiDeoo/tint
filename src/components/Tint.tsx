@@ -1,4 +1,4 @@
-import { useRegisterSW } from 'virtual:pwa-register/preact'
+import { useRegisterSW } from 'virtual:pwa-register/react'
 
 import { pickColor } from '../libs/picker'
 
