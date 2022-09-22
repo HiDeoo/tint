@@ -11,7 +11,7 @@ export async function pickColor() {
 
   const color = await eyeDropper.open()
 
-  // TODO(HiDeoo) Type as hex
+  // TODO(HiDeoo) Type as hex or transform
   return color.sRGBHex
 }
 

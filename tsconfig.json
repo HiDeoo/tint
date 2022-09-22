@@ -2,7 +2,10 @@
   "extends": "@hideoo/tsconfig",
   "compilerOptions": {
     "noEmit": true,
-    "types": ["vite-plugin-pwa/client"]
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "types": ["vite/client", "vite-plugin-pwa/client"]
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
