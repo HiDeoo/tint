@@ -13,7 +13,32 @@ export function Tint() {
   }
 
   return (
-    <div bg="red-500">
+    <div>
+      <div>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat, fugit. Nostrum, quod blanditiis temporibus
+        voluptatum mollitia aliquam quasi! Ipsam, suscipit aliquid. Ipsa, nam. Fuga labore hic unde voluptatum tenetur
+        eius?
+      </div>
+      <div>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat, fugit. Nostrum, quod blanditiis temporibus
+        voluptatum mollitia aliquam quasi! Ipsam, suscipit aliquid. Ipsa, nam. Fuga labore hic unde voluptatum tenetur
+        eius?
+      </div>
+      <div>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat, fugit. Nostrum, quod blanditiis temporibus
+        voluptatum mollitia aliquam quasi! Ipsam, suscipit aliquid. Ipsa, nam. Fuga labore hic unde voluptatum tenetur
+        eius?
+      </div>
+      <div>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat, fugit. Nostrum, quod blanditiis temporibus
+        voluptatum mollitia aliquam quasi! Ipsam, suscipit aliquid. Ipsa, nam. Fuga labore hic unde voluptatum tenetur
+        eius?
+      </div>
+      <div>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat, fugit. Nostrum, quod blanditiis temporibus
+        voluptatum mollitia aliquam quasi! Ipsam, suscipit aliquid. Ipsa, nam. Fuga labore hic unde voluptatum tenetur
+        eius?
+      </div>
       <button onClick={handleClick}>Hello 10</button>
       {needRefresh && (
         <div>

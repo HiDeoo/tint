@@ -7,6 +7,7 @@ specifiers:
   '@hideoo/tsconfig': 0.1.0
   '@preact/preset-vite': 2.4.0
   '@unocss/preset-attributify': 0.45.22
+  '@unocss/reset': 0.45.22
   eslint: 8.23.1
   husky: 8.0.1
   lint-staged: 13.0.3
@@ -19,6 +20,7 @@ specifiers:
   workbox-window: 6.5.4
 
 dependencies:
+  '@unocss/reset': 0.45.22
   preact: 10.11.0
 
 devDependencies:
@@ -1872,7 +1874,6 @@ packages:
 
   /@unocss/reset/0.45.22:
     resolution: {integrity: sha512-jNLWr5tZ2X+fMCNXYXJe5/AUeTPeWcXke0XpWSXrQ7f5Bbk1TpbUFcV7ln4DvUwRkQsmcDYxdj7em/wN1U0mSQ==}
-    dev: true
 
   /@unocss/scope/0.45.22:
     resolution: {integrity: sha512-ePhauPBGCMuJIV9v/Ybn03UfYyIF5uUSVl3QahISHObFM/x7CGQhWqSBFGCc+AjAZrPqdNstHNvcu+nHuwW3Kg==}

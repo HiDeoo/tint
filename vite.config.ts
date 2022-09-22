@@ -6,7 +6,14 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
   plugins: [
-    Unocss({ presets: [presetAttributify(), presetUno()] }),
+    Unocss({
+      presets: [presetAttributify(), presetUno()],
+      theme: {
+        breakpoints: {
+          lg: '512px',
+        },
+      },
+    }),
     preact(),
     VitePWA({
       includeAssets: ['images/favicon.ico', 'images/apple-touch-icon.png', 'images/masked-icon.svg'],

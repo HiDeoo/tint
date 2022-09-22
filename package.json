@@ -13,6 +13,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@unocss/reset": "0.45.22",
     "preact": "10.11.0"
   },
   "devDependencies": {
