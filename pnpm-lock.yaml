@@ -5,6 +5,7 @@ specifiers:
   '@hideoo/eslint-config': 0.8.0
   '@hideoo/prettier-config': 0.1.1
   '@hideoo/tsconfig': 0.1.0
+  '@preact/signals-react': 1.1.0
   '@radix-ui/react-slider': 1.0.0
   '@radix-ui/react-switch': 1.0.0
   '@types/prettier': 2.7.0
@@ -29,6 +30,7 @@ specifiers:
   workbox-window: 6.5.4
 
 dependencies:
+  '@preact/signals-react': 1.1.0_react@18.2.0
   '@radix-ui/react-slider': 1.0.0_biqbaboplfbrettd7655fr4n2y
   '@radix-ui/react-switch': 1.0.0_biqbaboplfbrettd7655fr4n2y
   '@unocss/reset': 0.45.22
@@ -1526,6 +1528,19 @@ packages:
   /@polka/url/1.0.0-next.21:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
+
+  /@preact/signals-core/1.2.0:
+    resolution: {integrity: sha512-GBjq/8WJkh/aenrEMvWIOr1lRfu6nb25er0m6r+4qVqKC85mXAYIbGHnoHTooNXCKxn2KEMUrATvN54MdMHE1A==}
+    dev: false
+
+  /@preact/signals-react/1.1.0_react@18.2.0:
+    resolution: {integrity: sha512-2EY5F9qxeCmm9pFsyw0/HHxbADm0sKh6rMpvpiZiaDsTmpJFW3FmKE7bPsUP7bqhmQTSrboN9RHrjpE4seGqIA==}
+    peerDependencies:
+      react: 17.x || 18.x
+    dependencies:
+      '@preact/signals-core': 1.2.0
+      react: 18.2.0
+    dev: false
 
   /@radix-ui/number/1.0.0:
     resolution: {integrity: sha512-Ofwh/1HX69ZfJRiRBMTy7rgjAzHmwe4kW9C9Y99HTRUcYLUuVT0KESFj15rPjRgKJs20GPq8Bm5aEDJ8DuA3vA==}

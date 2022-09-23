@@ -4,6 +4,10 @@ export function colorFromString(colorStr: string): Color {
   return colord(colorStr)
 }
 
+export function colorFromHsla(hslaColor: HslaColor): Color {
+  return colord(hslaColor)
+}
+
 export function colorWithRgbaComponents(color: Color, rgba: Partial<RgbaColor>): Color {
   return colord({
     r: rgba.r ?? color.rgba.r,

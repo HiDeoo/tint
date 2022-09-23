@@ -1,17 +1,23 @@
-import { useState } from 'react'
+import { useDeferredValue, useEffect, useState } from 'react'
 import { useRegisterSW } from 'virtual:pwa-register/react'
 
 import { ColorEditor } from '@/components/color/editor/ColorEditor'
 import { type ColorEditorType } from '@/components/color/editor/ColorEditorTypeSwitch'
-import { colorFromString, getColorString, type Color } from '@/libs/color'
+import { colorFromHsla, getColorHslaComponents, getColorString, type Color } from '@/libs/color'
 import { pickColor } from '@/libs/picker'
+import { editorHslaColor } from '@/signals/history'
 
 export function Tint() {
   const [editorType, setEditorType] = useState<ColorEditorType>('rgba')
-  const [color, setColor] = useState<Color>(() => colorFromString('#f0f'))
+  const [editorColor, setEditorColor] = useState<Color>(() => colorFromHsla(editorHslaColor.value))
+  const deferredEditorColor = useDeferredValue(editorColor)
+
+  useEffect(() => {
+    editorHslaColor.value = getColorHslaComponents(deferredEditorColor)
+  }, [deferredEditorColor])
 
   function handleColorChange(newColor: Color) {
-    setColor(newColor)
+    setEditorColor(newColor)
   }
 
   function handleEditorTypeChange(newType: ColorEditorType) {
@@ -29,9 +35,10 @@ export function Tint() {
 
   return (
     <main>
-      <div className="h-16 w-16" style={{ backgroundColor: getColorString(color) }} />
+      <br />
+      <div className="h-16 w-16" style={{ backgroundColor: getColorString(editorColor) }} />
       <ColorEditor
-        color={color}
+        color={editorColor}
         onChangeColor={handleColorChange}
         onChangeType={handleEditorTypeChange}
         type={editorType}
