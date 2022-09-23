@@ -2,33 +2,25 @@ import { useDeferredValue, useEffect, useState } from 'react'
 import { useRegisterSW } from 'virtual:pwa-register/react'
 
 import { ColorEditor } from '@/components/color/editor/ColorEditor'
-import { type ColorEditorType } from '@/components/color/editor/ColorEditorTypeSwitch'
 import { colorFromHsla, getColorHslaComponents, getColorString, type Color } from '@/libs/color'
 import { pickColor } from '@/libs/picker'
-import { editorHslaColor } from '@/signals/history'
+import { editorHslaColorSignal } from '@/signals/history'
 
 export function Tint() {
-  const [editorType, setEditorType] = useState<ColorEditorType>('rgba')
-  const [editorColor, setEditorColor] = useState<Color>(() => colorFromHsla(editorHslaColor.value))
+  const [editorColor, setEditorColor] = useState<Color>(() => colorFromHsla(editorHslaColorSignal.value))
   const deferredEditorColor = useDeferredValue(editorColor)
 
   useEffect(() => {
-    editorHslaColor.value = getColorHslaComponents(deferredEditorColor)
+    editorHslaColorSignal.value = getColorHslaComponents(deferredEditorColor)
   }, [deferredEditorColor])
 
-  function handleColorChange(newColor: Color) {
-    setEditorColor(newColor)
-  }
-
-  function handleEditorTypeChange(newType: ColorEditorType) {
-    setEditorType(newType)
-  }
-
+  // FIXME(HiDeoo)
   const {
     needRefresh: [needRefresh, setNeedRefresh],
     updateServiceWorker,
   } = useRegisterSW()
 
+  // FIXME(HiDeoo)
   const close = () => {
     setNeedRefresh(false)
   }
@@ -37,12 +29,7 @@ export function Tint() {
     <main>
       <br />
       <div className="h-16 w-16" style={{ backgroundColor: getColorString(editorColor) }} />
-      <ColorEditor
-        color={editorColor}
-        onChangeColor={handleColorChange}
-        onChangeType={handleEditorTypeChange}
-        type={editorType}
-      />
+      <ColorEditor color={editorColor} onChangeColor={setEditorColor} />
       <button onClick={handleClick}>Hello 10</button>
       {needRefresh && (
         <div>
