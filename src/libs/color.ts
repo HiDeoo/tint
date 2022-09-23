@@ -18,19 +18,29 @@ export function colorWithAlpha(color: Color, alpha: number): Color {
 }
 
 export function colorWithHue(color: Color, hue: number): Color {
-  return color.hue(hue)
+  return color.hue(hue < 360 ? hue : hue - 10 ** -6)
 }
 
 export function colorWithSaturation(color: Color, saturation: number): Color {
   const hslaColor = getColorHslaComponents(color)
 
-  return colord({ h: hslaColor.h, s: saturation, l: hslaColor.l, a: hslaColor.a })
+  return colord({
+    h: hslaColor.h,
+    s: saturation > 0 ? saturation : 10 ** -6,
+    l: hslaColor.l,
+    a: hslaColor.a,
+  })
 }
 
 export function colorWithLightness(color: Color, lightness: number): Color {
   const hslaColor = getColorHslaComponents(color)
 
-  return colord({ h: hslaColor.h, s: hslaColor.s, l: lightness, a: hslaColor.a })
+  return colord({
+    h: hslaColor.h,
+    s: hslaColor.s,
+    l: lightness > 0 ? (lightness < 100 ? lightness : 100 - 10 ** -6) : 10 ** -6,
+    a: hslaColor.a,
+  })
 }
 
 export function getColorRgbaComponents(color: Color): RgbaColor {
