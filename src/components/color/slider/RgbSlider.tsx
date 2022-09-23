@@ -10,8 +10,8 @@ import {
 export function RgbSlider({ color, component, onChange }: RgbSliderProps) {
   const rgbaColor = getColorRgbaComponents(color)
 
-  const lColor = getColorString(colorWithRgbaComponents(color, { [component]: 0 }))
-  const rColor = getColorString(colorWithRgbaComponents(color, { [component]: 255 }))
+  const lColor = getColorString(colorWithRgbaComponents(color, { a: 1, [component]: 0 }))
+  const rColor = getColorString(colorWithRgbaComponents(color, { a: 1, [component]: 255 }))
 
   function handleChange(newValue: number) {
     onChange(colorWithRgbaComponents(color, { [component]: newValue }))

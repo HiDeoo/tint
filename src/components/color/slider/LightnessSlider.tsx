@@ -1,12 +1,12 @@
 import { ColorSlider } from '@/components/color/slider/ColorSlider'
-import { type Color, getColorString, colorWithLightness } from '@/libs/color'
+import { type Color, getColorString, colorWithLightness, getColorHslaComponents, colorWithAlpha } from '@/libs/color'
 
 export function LightnessSlider({ color, onChange }: LightnessSliderProps) {
-  const hslaColor = color.toHsl()
+  const hslaColor = getColorHslaComponents(color)
 
-  const lColor = getColorString(colorWithLightness(color, 0))
-  const mColor = getColorString(colorWithLightness(color, 50))
-  const rColor = getColorString(colorWithLightness(color, 100))
+  const lColor = getColorString(colorWithLightness(colorWithAlpha(color, 1), 0))
+  const mColor = getColorString(colorWithLightness(colorWithAlpha(color, 1), 50))
+  const rColor = getColorString(colorWithLightness(colorWithAlpha(color, 1), 100))
 
   function handleChange(newValue: number) {
     onChange(colorWithLightness(color, newValue))

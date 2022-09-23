@@ -1,11 +1,11 @@
 import { ColorSlider } from '@/components/color/slider/ColorSlider'
-import { type Color, getColorString, colorWithSaturation } from '@/libs/color'
+import { type Color, getColorString, colorWithSaturation, getColorHslaComponents, colorWithAlpha } from '@/libs/color'
 
 export function SaturationSlider({ color, onChange }: SaturationSliderProps) {
-  const hslaColor = color.toHsl()
+  const hslaColor = getColorHslaComponents(color)
 
-  const lColor = getColorString(colorWithSaturation(color, 0))
-  const rColor = getColorString(colorWithSaturation(color, 100))
+  const lColor = getColorString(colorWithSaturation(colorWithAlpha(color, 1), 0))
+  const rColor = getColorString(colorWithSaturation(colorWithAlpha(color, 1), 100))
 
   function handleChange(newValue: number) {
     onChange(colorWithSaturation(color, newValue))

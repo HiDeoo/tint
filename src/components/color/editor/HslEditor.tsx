@@ -1,6 +1,8 @@
+import { AlphaComponent } from '@/components/color/component/AlphaComponent'
 import { HueComponent } from '@/components/color/component/HueComponent'
 import { LightnessComponent } from '@/components/color/component/LightnessComponent'
 import { SaturationComponent } from '@/components/color/component/SaturationComponent'
+import { AlphaSlider } from '@/components/color/slider/AlphaSlider'
 import { HueSlider } from '@/components/color/slider/HueSlider'
 import { LightnessSlider } from '@/components/color/slider/LightnessSlider'
 import { SaturationSlider } from '@/components/color/slider/SaturationSlider'
@@ -15,6 +17,8 @@ export function HslEditor({ color, onChange, typeSwitch }: HslEditorProps) {
       <br />
       <LightnessSlider color={color} onChange={onChange} />
       <br />
+      <AlphaSlider color={color} onChange={onChange} />
+      <br />
       {typeSwitch}
       <br />
       <HueComponent color={color} onChange={onChange} />
@@ -22,6 +26,8 @@ export function HslEditor({ color, onChange, typeSwitch }: HslEditorProps) {
       <SaturationComponent color={color} onChange={onChange} />
       <br />
       <LightnessComponent color={color} onChange={onChange} />
+      <br />
+      <AlphaComponent color={color} onChange={onChange} />
     </>
   )
 }

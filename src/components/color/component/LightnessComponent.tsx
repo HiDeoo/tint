@@ -1,8 +1,8 @@
 import { ColorComponent } from '@/components/color/component/ColorComponent'
-import { type Color, colorWithLightness } from '@/libs/color'
+import { type Color, colorWithLightness, getColorHslaComponents } from '@/libs/color'
 
 export function LightnessComponent({ color, onChange }: LightnessComponentProps) {
-  const hslaColor = color.toHsl()
+  const hslaColor = getColorHslaComponents(color)
 
   function handleChange(newValue: number) {
     onChange(colorWithLightness(color, newValue))

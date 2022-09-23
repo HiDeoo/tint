@@ -1,8 +1,8 @@
 import { ColorComponent } from '@/components/color/component/ColorComponent'
-import { type Color, colorWithSaturation } from '@/libs/color'
+import { type Color, colorWithSaturation, getColorHslaComponents } from '@/libs/color'
 
 export function SaturationComponent({ color, onChange }: SaturationComponentProps) {
-  const hslaColor = color.toHsl()
+  const hslaColor = getColorHslaComponents(color)
 
   function handleChange(newValue: number) {
     onChange(colorWithSaturation(color, newValue))

@@ -1,4 +1,4 @@
-import { colord, type Colord, type RgbaColor } from 'colord'
+import { colord, type HslaColor, type Colord, type RgbaColor } from 'colord'
 
 export function colorFromString(colorStr: string): Color {
   return colord(colorStr)
@@ -13,24 +13,32 @@ export function colorWithRgbaComponents(color: Color, rgba: Partial<RgbaColor>):
   })
 }
 
+export function colorWithAlpha(color: Color, alpha: number): Color {
+  return color.alpha(alpha)
+}
+
 export function colorWithHue(color: Color, hue: number): Color {
   return color.hue(hue)
 }
 
 export function colorWithSaturation(color: Color, saturation: number): Color {
-  const hslaColor = color.toHsl()
+  const hslaColor = getColorHslaComponents(color)
 
   return colord({ h: hslaColor.h, s: saturation, l: hslaColor.l, a: hslaColor.a })
 }
 
 export function colorWithLightness(color: Color, lightness: number): Color {
-  const hslaColor = color.toHsl()
+  const hslaColor = getColorHslaComponents(color)
 
   return colord({ h: hslaColor.h, s: hslaColor.s, l: lightness, a: hslaColor.a })
 }
 
 export function getColorRgbaComponents(color: Color): RgbaColor {
   return color.toRgb()
+}
+
+export function getColorHslaComponents(color: Color): HslaColor {
+  return color.toHsl()
 }
 
 export function getColorString(color: Color, format: ColorFormat = 'hsl'): string {
