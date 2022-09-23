@@ -1,7 +1,8 @@
 import { Root, Thumb, Track } from '@radix-ui/react-slider'
+import clsx from 'clsx'
 import { type CSSProperties } from 'react'
 
-export function ColorSlider({ max, onChange, style, value }: ColorSliderProps) {
+export function ColorSlider({ className, max, onChange, style, value }: ColorSliderProps) {
   function handleChange(value: number[]) {
     const newValue = value[0]
 
@@ -18,15 +19,17 @@ export function ColorSlider({ max, onChange, style, value }: ColorSliderProps) {
       onValueChange={handleChange}
       value={[value]}
     >
-      <Track className="relative h-4 w-full grow rounded-full bg-red-600" style={style} />
+      {/* // TODO Remove red */}
+      <Track className={clsx('relative h-4 w-full grow rounded-full', className)} style={style} />
       <Thumb className="block h-4 w-4 rounded-full bg-white" />
     </Root>
   )
 }
 
 interface ColorSliderProps {
+  className?: string
   max: number
   onChange: (newValue: number) => void
-  style: CSSProperties
+  style?: CSSProperties
   value: number
 }

@@ -12,6 +12,7 @@ specifiers:
   '@types/react-dom': 18.0.6
   '@unocss/reset': 0.45.22
   '@vitejs/plugin-react': 2.1.0
+  clsx: 1.2.1
   colord: 2.9.3
   eslint: 8.23.1
   husky: 8.0.1
@@ -31,6 +32,7 @@ dependencies:
   '@radix-ui/react-slider': 1.0.0_biqbaboplfbrettd7655fr4n2y
   '@radix-ui/react-switch': 1.0.0_biqbaboplfbrettd7655fr4n2y
   '@unocss/reset': 0.45.22
+  clsx: 1.2.1
   colord: 2.9.3
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -2483,6 +2485,11 @@ packages:
       slice-ansi: 5.0.0
       string-width: 5.1.2
     dev: true
+
+  /clsx/1.2.1:
+    resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
+    engines: {node: '>=6'}
+    dev: false
 
   /color-convert/1.9.3:
     resolution: {integrity: sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==}

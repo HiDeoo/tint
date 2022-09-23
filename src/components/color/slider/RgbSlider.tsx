@@ -21,7 +21,7 @@ export function RgbSlider({ color, component, onChange }: RgbSliderProps) {
     <ColorSlider
       max={255}
       onChange={handleChange}
-      style={{ background: `linear-gradient(to right, ${lColor} 0%, ${rColor} 100%)` }}
+      style={{ background: `linear-gradient(to right, ${lColor}, ${rColor})` }}
       value={rgbaColor[component]}
     />
   )

@@ -13,6 +13,22 @@ export function colorWithRgbaComponents(color: Color, rgba: Partial<RgbaColor>):
   })
 }
 
+export function colorWithHue(color: Color, hue: number): Color {
+  return color.hue(hue)
+}
+
+export function colorWithSaturation(color: Color, saturation: number): Color {
+  const hslaColor = color.toHsl()
+
+  return colord({ h: hslaColor.h, s: saturation, l: hslaColor.l, a: hslaColor.a })
+}
+
+export function colorWithLightness(color: Color, lightness: number): Color {
+  const hslaColor = color.toHsl()
+
+  return colord({ h: hslaColor.h, s: hslaColor.s, l: lightness, a: hslaColor.a })
+}
+
 export function getColorRgbaComponents(color: Color): RgbaColor {
   return color.toRgb()
 }

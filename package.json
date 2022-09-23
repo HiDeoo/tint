@@ -16,6 +16,7 @@
     "@radix-ui/react-slider": "1.0.0",
     "@radix-ui/react-switch": "1.0.0",
     "@unocss/reset": "0.45.22",
+    "clsx": "1.2.1",
     "colord": "2.9.3",
     "react": "18.2.0",
     "react-dom": "18.2.0"

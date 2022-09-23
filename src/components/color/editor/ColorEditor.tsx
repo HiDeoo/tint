@@ -1,9 +1,10 @@
 import { type ColorEditorType, ColorEditorTypeSwitch } from '@/components/color/editor/ColorEditorTypeSwitch'
+import { HslEditor } from '@/components/color/editor/HslEditor'
 import { RgbEditor } from '@/components/color/editor/RgbEditor'
 import { type Color } from '@/libs/color'
 
 export function ColorEditor({ color, onChangeColor, onChangeType, type }: ColorEditorProps) {
-  const EditorComponent = type === 'rgba' ? RgbEditor : RgbEditor
+  const EditorComponent = type === 'rgba' ? RgbEditor : HslEditor
 
   return (
     <EditorComponent
