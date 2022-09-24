@@ -2,9 +2,9 @@ import { useDeferredValue, useEffect, useState } from 'react'
 import { useRegisterSW } from 'virtual:pwa-register/react'
 
 import { ColorEditor } from '@/components/color/editor/ColorEditor'
-import { colorFromHsla, getColorHslaComponents, getColorString, type Color } from '@/libs/color'
-import { pickColor } from '@/libs/picker'
-import { editorHslaColorSignal } from '@/signals/history'
+import { ColorPreview } from '@/components/color/preview/ColorPreview'
+import { colorFromHsla, getColorHslaComponents, type Color } from '@/libs/color'
+import { editorHslaColorSignal } from '@/signals/editor'
 
 export function Tint() {
   const [editorColor, setEditorColor] = useState<Color>(() => colorFromHsla(editorHslaColorSignal.value))
@@ -28,9 +28,8 @@ export function Tint() {
   return (
     <main>
       <br />
-      <div className="h-16 w-16" style={{ backgroundColor: getColorString(editorColor) }} />
-      <ColorEditor color={editorColor} onChangeColor={setEditorColor} />
-      <button onClick={handleClick}>Hello 10</button>
+      <ColorPreview color={editorColor} onPick={setEditorColor} />
+      <ColorEditor color={editorColor} onChange={setEditorColor} />
       {needRefresh && (
         <div>
           <div>New Update</div>
@@ -40,10 +39,4 @@ export function Tint() {
       )}
     </main>
   )
-}
-
-async function handleClick() {
-  const color = await pickColor()
-
-  console.error('🚨 [App.tsx:16] color', color)
 }

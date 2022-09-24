@@ -1,5 +1,5 @@
 import { type ColorEditorType } from '@/components/color/editor/ColorEditorTypeSwitch'
-import { getColorHslaComponents, colorFromString } from '@/libs/color'
+import { type ColorFormat, colorFromString, getColorHslaComponents } from '@/libs/color'
 import { signalWithStorage } from '@/signals'
 
 // FIXME(HiDeoo) default color
@@ -9,3 +9,5 @@ export const editorHslaColorSignal = signalWithStorage(
 )
 
 export const editorTypeSignal = signalWithStorage<ColorEditorType>('editorType', 'rgba')
+
+export const editorExportFormatSignal = signalWithStorage<ColorFormat>('editorExportFormat', 'hsl')

@@ -1,3 +1,5 @@
+import { colorFromString } from '@/libs/color'
+
 export function isColorPickerAvailable() {
   return 'EyeDropper' in globalThis
 }
@@ -11,8 +13,7 @@ export async function pickColor() {
 
   const color = await eyeDropper.open()
 
-  // TODO(HiDeoo) Type as hex or transform
-  return color.sRGBHex
+  return colorFromString(color.sRGBHex)
 }
 
 declare class EyeDropper {

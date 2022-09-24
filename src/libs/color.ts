@@ -1,5 +1,7 @@
 import { colord, type HslaColor, type Colord, type RgbaColor } from 'colord'
 
+export const COLOR_FORMATS = ['hex', 'hsl'] as const
+
 export function colorFromString(colorStr: string): Color {
   return colord(colorStr)
 }
@@ -60,6 +62,9 @@ export function getColorString(color: Color, format: ColorFormat = 'hsl'): strin
     case 'hsl': {
       return color.toHslString()
     }
+    case 'hex': {
+      return color.toHex()
+    }
     default: {
       throw new Error(`Unsupported color format '${format}'.`)
     }
@@ -70,4 +75,4 @@ export type Color = Colord
 
 export type RgbaComponent = keyof RgbaColor
 
-type ColorFormat = 'hsl'
+export type ColorFormat = typeof COLOR_FORMATS[number]
