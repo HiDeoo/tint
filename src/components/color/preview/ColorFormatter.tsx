@@ -1,20 +1,21 @@
 import { Select } from '@/components/ui/Select'
-import { type ColorFormat, COLOR_FORMATS, getColorString, type Color } from '@/libs/color'
-import { editorExportFormatSignal } from '@/signals/editor'
+import { COLOR_FORMATS, type ColorFormat } from '@/constants/color'
+import { getColorString, type Color } from '@/libs/color'
+import { editorFormatSignal } from '@/signals/editor'
 
 export function ColorFormatter({ color }: ColorFormatterProps) {
   function handleChange(newFormat: ColorFormat) {
-    editorExportFormatSignal.value = newFormat
+    editorFormatSignal.value = newFormat
   }
 
   return (
     <>
-      <div>{getColorString(color, editorExportFormatSignal.value)}</div>
+      <div>{getColorString(color, editorFormatSignal.value)}</div>
       <div>
         <Select
           items={COLOR_FORMATS}
           onChange={handleChange}
-          selectedItem={editorExportFormatSignal.value}
+          selectedItem={editorFormatSignal.value}
           triggerLabel="Food"
           triggerPlaceholder="Select a fruit"
         />

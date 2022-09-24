@@ -1,13 +1,13 @@
 import { colord, type HslaColor, type Colord, type RgbaColor } from 'colord'
 
-export const COLOR_FORMATS = ['hex', 'hsl'] as const
+import { type ColorFormat } from '@/constants/color'
+
+export function colorFromSerializedColor(serializedColor: SerializedColor): Color {
+  return colord(serializedColor)
+}
 
 export function colorFromString(colorStr: string): Color {
   return colord(colorStr)
-}
-
-export function colorFromHsla(hslaColor: HslaColor): Color {
-  return colord(hslaColor)
 }
 
 export function colorWithRgbaComponents(color: Color, rgba: Partial<RgbaColor>): Color {
@@ -49,6 +49,10 @@ export function colorWithLightness(color: Color, lightness: number): Color {
   })
 }
 
+export function getSerializedColor(color: Color): SerializedColor {
+  return getColorHslaComponents(color)
+}
+
 export function getColorRgbaComponents(color: Color): RgbaColor {
   return color.toRgb()
 }
@@ -71,8 +75,19 @@ export function getColorString(color: Color, format: ColorFormat = 'hsl'): strin
   }
 }
 
+export function isEqualSerializedColor(lSerializedColor: SerializedColor, rSerializedColor: SerializedColor): boolean {
+  return (
+    lSerializedColor.h === rSerializedColor.h &&
+    lSerializedColor.s === rSerializedColor.s &&
+    lSerializedColor.l === rSerializedColor.l &&
+    lSerializedColor.a === rSerializedColor.a
+  )
+}
+
 export type Color = Colord
 
 export type RgbaComponent = keyof RgbaColor
 
-export type ColorFormat = typeof COLOR_FORMATS[number]
+// https://github.com/microsoft/TypeScript/issues/31940#issuecomment-841712377
+// eslint-disable-next-line @typescript-eslint/ban-types
+export type SerializedColor = HslaColor & {}

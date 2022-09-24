@@ -5,14 +5,16 @@ export function signalWithStorage<TValue>(
   initialValue: TValue,
   storage: Storage<TValue> = getDefaultStorage()
 ) {
-  const newSignal = signal(storage.getItem(key) ?? initialValue)
+  const prefixedKey = `tint:${key}`
 
-  storage.subscribe(key, (newValue) => {
+  const newSignal = signal(storage.getItem(prefixedKey) ?? initialValue)
+
+  storage.subscribe(prefixedKey, (newValue) => {
     newSignal.value = newValue
   })
 
   effect(() => {
-    storage.setItem(key, newSignal.value)
+    storage.setItem(prefixedKey, newSignal.value)
   })
 
   return newSignal

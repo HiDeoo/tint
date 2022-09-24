@@ -2,16 +2,20 @@ import { useDeferredValue, useEffect, useState } from 'react'
 import { useRegisterSW } from 'virtual:pwa-register/react'
 
 import { ColorEditor } from '@/components/color/editor/ColorEditor'
+import { ColorHistory } from '@/components/color/history/ColorHistory'
 import { ColorPreview } from '@/components/color/preview/ColorPreview'
-import { colorFromHsla, getColorHslaComponents, type Color } from '@/libs/color'
-import { editorHslaColorSignal } from '@/signals/editor'
+import { useShortcuts } from '@/hooks/useShorcuts'
+import { colorFromSerializedColor, getSerializedColor, type Color } from '@/libs/color'
+import { editorColorSignal } from '@/signals/editor'
 
 export function Tint() {
-  const [editorColor, setEditorColor] = useState<Color>(() => colorFromHsla(editorHslaColorSignal.value))
+  useShortcuts()
+
+  const [editorColor, setEditorColor] = useState<Color>(() => colorFromSerializedColor(editorColorSignal.value))
   const deferredEditorColor = useDeferredValue(editorColor)
 
   useEffect(() => {
-    editorHslaColorSignal.value = getColorHslaComponents(deferredEditorColor)
+    editorColorSignal.value = getSerializedColor(deferredEditorColor)
   }, [deferredEditorColor])
 
   // FIXME(HiDeoo)
@@ -30,6 +34,7 @@ export function Tint() {
       <br />
       <ColorPreview color={editorColor} onPick={setEditorColor} />
       <ColorEditor color={editorColor} onChange={setEditorColor} />
+      <ColorHistory onSelect={setEditorColor} />
       {needRefresh && (
         <div>
           <div>New Update</div>
