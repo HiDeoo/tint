@@ -1,5 +1,5 @@
 import { Select } from '@/components/ui/Select'
-import { COLOR_FORMATS, type ColorFormat } from '@/constants/color'
+import { GROUPED_COLOR_FORMATS, type ColorFormat } from '@/constants/color'
 import { getColorString, type Color } from '@/libs/color'
 import { editorFormatSignal } from '@/signals/editor'
 
@@ -9,14 +9,14 @@ export function ColorFormatter({ color }: ColorFormatterProps) {
   }
 
   return (
-    <section className="flex justify-between py-2">
-      <div className="text-lg font-medium">{getColorString(color, editorFormatSignal.value)}</div>
+    <section className="flex items-center justify-between py-2">
+      <div className="text-xl font-medium">{getColorString(color, editorFormatSignal.value)}</div>
       <Select
-        items={COLOR_FORMATS}
+        items={GROUPED_COLOR_FORMATS}
         onChange={handleChange}
         selectedItem={editorFormatSignal.value}
-        triggerLabel="Food"
-        triggerPlaceholder="Select a fruit"
+        triggerLabel="// TODO"
+        triggerPlaceholder="// TODO"
       />
     </section>
   )

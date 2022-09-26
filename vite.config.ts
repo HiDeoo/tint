@@ -19,27 +19,22 @@ export default defineConfig({
       transformers: [transformerVariantGroup()],
       variants: [
         (matcher) => {
-          const prefix = 'ds-active:'
+          const prefixes = ['ds-active:', 'ds-inactive:', 'd-highlighted:']
+          const prefix = prefixes.find((prefix) => matcher.startsWith(prefix))
 
-          if (!matcher.startsWith(prefix)) {
+          if (!prefix) {
             return matcher
           }
 
           return {
             matcher: matcher.slice(prefix.length),
-            selector: (selector) => `${selector}[data-state="active"]`,
-          }
-        },
-        (matcher) => {
-          const prefix = 'ds-inactive:'
+            selector: (selector) => {
+              if (prefix.startsWith('ds')) {
+                return `${selector}[data-state="${prefix.slice(3, -1)}"]`
+              }
 
-          if (!matcher.startsWith(prefix)) {
-            return matcher
-          }
-
-          return {
-            matcher: matcher.slice(prefix.length),
-            selector: (selector) => `${selector}[data-state="inactive"]`,
+              return `${selector}[data-${prefix.slice(2, -1)}]`
+            },
           }
         },
       ],

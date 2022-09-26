@@ -1,4 +1,6 @@
+import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons'
 import * as SelectPrimitive from '@radix-ui/react-select'
+import { Fragment } from 'react'
 
 export function Select<TItem extends string>({
   items,
@@ -9,21 +11,35 @@ export function Select<TItem extends string>({
 }: SelectProps<TItem>) {
   return (
     <SelectPrimitive.Root onValueChange={onChange} value={selectedItem}>
-      <SelectPrimitive.Trigger aria-label={triggerLabel}>
+      <SelectPrimitive.Trigger
+        aria-label={triggerLabel}
+        className="flex items-center gap-5 rounded-md bg-zinc-700/75 py-1.5 pl-3.5 pr-3 hover:bg-zinc-700"
+      >
         <SelectPrimitive.Value placeholder={triggerPlaceholder} />
-        <SelectPrimitive.Icon />
+        <SelectPrimitive.Icon>
+          <ChevronDownIcon />
+        </SelectPrimitive.Icon>
       </SelectPrimitive.Trigger>
       <SelectPrimitive.Portal>
-        <SelectPrimitive.Content>
-          <SelectPrimitive.ScrollUpButton />
-          <SelectPrimitive.Viewport>
+        <SelectPrimitive.Content className="overflow-hidden rounded-md bg-zinc-700">
+          <SelectPrimitive.ScrollUpButton className="flex h-8 items-center justify-center bg-zinc-700">
+            <ChevronUpIcon />
+          </SelectPrimitive.ScrollUpButton>
+          <SelectPrimitive.Viewport className="p-2">
             {Array.isArray(items)
               ? items.map((item) => <SelectItem key={item} item={item} />)
-              : Object.entries(items).map(([groupName, groupItems]) => (
-                  <SelectGroup key={groupName} label={groupName} items={groupItems} />
+              : Object.entries(items).map(([groupName, groupItems], index) => (
+                  <Fragment key={groupName}>
+                    <SelectGroup label={groupName} items={groupItems} />
+                    {index < Object.keys(items).length - 1 ? (
+                      <SelectPrimitive.Separator className="mt-2.5 mb-0.5 h-px bg-zinc-500/75" />
+                    ) : null}
+                  </Fragment>
                 ))}
           </SelectPrimitive.Viewport>
-          <SelectPrimitive.ScrollDownButton />
+          <SelectPrimitive.ScrollDownButton className="flex h-8 items-center justify-center bg-zinc-700">
+            <ChevronDownIcon />
+          </SelectPrimitive.ScrollDownButton>
         </SelectPrimitive.Content>
       </SelectPrimitive.Portal>
     </SelectPrimitive.Root>
@@ -33,7 +49,7 @@ export function Select<TItem extends string>({
 function SelectGroup<TItem extends string>({ items, label }: SelectGroupProps<TItem>) {
   return (
     <SelectPrimitive.Group>
-      <SelectPrimitive.Label>{label}</SelectPrimitive.Label>
+      <SelectPrimitive.Label className="select-none py-1.5 px-7 text-zinc-400">{label}</SelectPrimitive.Label>
       {items.map((item) => (
         <SelectItem key={item} item={item} />
       ))}
@@ -43,9 +59,14 @@ function SelectGroup<TItem extends string>({ items, label }: SelectGroupProps<TI
 
 function SelectItem<TItem extends string>({ item }: SelectItemProps<TItem>) {
   return (
-    <SelectPrimitive.Item value={item}>
+    <SelectPrimitive.Item
+      value={item}
+      className="d-highlighted:bg-blue-600 relative select-none rounded-md py-1.5 px-7 outline-none"
+    >
       <SelectPrimitive.ItemText>{item}</SelectPrimitive.ItemText>
-      <SelectPrimitive.ItemIndicator />
+      <SelectPrimitive.ItemIndicator className="absolute left-0.5 top-0 bottom-0 flex w-6 items-center justify-center">
+        <CheckIcon />
+      </SelectPrimitive.ItemIndicator>
     </SelectPrimitive.Item>
   )
 }
