@@ -1,22 +1,21 @@
-import { Root, Thumb } from '@radix-ui/react-switch'
+import * as TabsPrimitive from '@radix-ui/react-tabs'
 
-export function ColorEditorTypeSwitch({ onChange, type }: ColorEditorTypeSwitchProps) {
-  function handleChange(newChecked: boolean) {
-    onChange(newChecked ? 'hsla' : 'rgba')
-  }
-
-  const checked = type === 'hsla'
+export function ColorEditorTypeSwitch() {
+  const className = 'font-medium px-4.5 py-2.5 ds-active:bg-blue-600 ds-inactive:hover:bg-zinc-700'
 
   return (
-    <Root checked={checked} className="relative h-5 w-10 rounded-full bg-red-600" onCheckedChange={handleChange}>
-      <Thumb className="data-state-checked:translate-x-4 block h-5 w-5 rounded-full bg-white" />
-    </Root>
+    <TabsPrimitive.TabsList
+      aria-label="// TODO"
+      className="xss:grid-cols-2 grid overflow-hidden rounded-md bg-zinc-700/75"
+    >
+      <TabsPrimitive.TabsTrigger className={className} value="hsla">
+        HSLA
+      </TabsPrimitive.TabsTrigger>
+      <TabsPrimitive.TabsTrigger className={className} value="rgba">
+        RGBA
+      </TabsPrimitive.TabsTrigger>
+    </TabsPrimitive.TabsList>
   )
-}
-
-interface ColorEditorTypeSwitchProps {
-  onChange: (newType: ColorEditorType) => void
-  type: ColorEditorType
 }
 
 export type ColorEditorType = 'rgba' | 'hsla'

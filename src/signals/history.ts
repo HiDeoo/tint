@@ -1,8 +1,7 @@
 import { type SerializedColor, type Color, getSerializedColor, isEqualSerializedColor } from '@/libs/color'
 import { signalWithStorage } from '@/signals'
 
-// FIXME(HiDeoo)
-const maxHistorySize = 5
+const maxHistorySize = 10
 
 export const historySignal = signalWithStorage<HistoryEntries>('history', [])
 

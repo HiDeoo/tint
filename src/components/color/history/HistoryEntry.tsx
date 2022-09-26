@@ -5,7 +5,9 @@ export function HistoryEntry({ colorStr, onSelect }: HistoryEntryProps) {
     onSelect(colorFromString(colorStr))
   }
 
-  return <button className="h-5 w-5" style={{ backgroundColor: colorStr }} onClick={handleClick} />
+  return (
+    <button className="aspect-square w-10 rounded-md" style={{ backgroundColor: colorStr }} onClick={handleClick} />
+  )
 }
 
 interface HistoryEntryProps {

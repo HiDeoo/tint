@@ -9,18 +9,16 @@ export function ColorFormatter({ color }: ColorFormatterProps) {
   }
 
   return (
-    <>
-      <div>{getColorString(color, editorFormatSignal.value)}</div>
-      <div>
-        <Select
-          items={COLOR_FORMATS}
-          onChange={handleChange}
-          selectedItem={editorFormatSignal.value}
-          triggerLabel="Food"
-          triggerPlaceholder="Select a fruit"
-        />
-      </div>
-    </>
+    <section className="flex justify-between py-3">
+      <div className="text-lg font-medium">{getColorString(color, editorFormatSignal.value)}</div>
+      <Select
+        items={COLOR_FORMATS}
+        onChange={handleChange}
+        selectedItem={editorFormatSignal.value}
+        triggerLabel="Food"
+        triggerPlaceholder="Select a fruit"
+      />
+    </section>
   )
 }
 

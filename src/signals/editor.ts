@@ -6,6 +6,6 @@ import { signalWithStorage } from '@/signals'
 // FIXME(HiDeoo) default color
 export const editorColorSignal = signalWithStorage('editorColor', getSerializedColor(colorFromString('#ff00ff')))
 
-export const editorTypeSignal = signalWithStorage<ColorEditorType>('editorType', 'rgba')
+export const editorTypeSignal = signalWithStorage<ColorEditorType>('editorType', 'hsla')
 
 export const editorFormatSignal = signalWithStorage<ColorFormat>('editorFormat', 'hsl')

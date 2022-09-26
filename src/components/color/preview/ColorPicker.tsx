@@ -8,7 +8,13 @@ export function ColorPicker({ color, onPick }: ColorPickerProps) {
     onPick(color)
   }
 
-  return <button className="h-16 w-16" onClick={handleClick} style={{ backgroundColor: getColorString(color) }} />
+  return (
+    <button
+      className="h-32 w-full rounded-md"
+      onClick={handleClick}
+      style={{ backgroundColor: getColorString(color) }}
+    />
+  )
 }
 
 interface ColorPickerProps {

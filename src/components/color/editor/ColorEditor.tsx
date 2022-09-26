@@ -1,23 +1,26 @@
-import { type ColorEditorType, ColorEditorTypeSwitch } from '@/components/color/editor/ColorEditorTypeSwitch'
+import * as TabsPrimitive from '@radix-ui/react-tabs'
+
+import { type ColorEditorType } from '@/components/color/editor/ColorEditorTypeSwitch'
 import { HslEditor } from '@/components/color/editor/HslEditor'
 import { RgbEditor } from '@/components/color/editor/RgbEditor'
 import { type Color } from '@/libs/color'
 import { editorTypeSignal } from '@/signals/editor'
 
 export function ColorEditor({ color, onChange }: ColorEditorProps) {
-  const EditorComponent = editorTypeSignal.value === 'rgba' ? RgbEditor : HslEditor
-
   return (
-    <EditorComponent
-      color={color}
-      onChange={onChange}
-      typeSwitch={<ColorEditorTypeSwitch type={editorTypeSignal.value} onChange={handleTypeChange} />}
-    />
+    <TabsPrimitive.Root value={editorTypeSignal.value} onValueChange={handleTypeChange}>
+      <TabsPrimitive.Content value="hsla">
+        <HslEditor color={color} onChange={onChange} />
+      </TabsPrimitive.Content>
+      <TabsPrimitive.Content value="rgba">
+        <RgbEditor color={color} onChange={onChange} />
+      </TabsPrimitive.Content>
+    </TabsPrimitive.Root>
   )
 }
 
-function handleTypeChange(newType: ColorEditorType) {
-  editorTypeSignal.value = newType
+function handleTypeChange(newType: string) {
+  editorTypeSignal.value = newType as ColorEditorType
 }
 
 interface ColorEditorProps {

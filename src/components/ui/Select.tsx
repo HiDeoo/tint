@@ -1,19 +1,4 @@
-import {
-  Content,
-  Group,
-  Icon,
-  Item,
-  ItemText,
-  ItemIndicator,
-  Label,
-  Portal,
-  Root,
-  ScrollDownButton,
-  ScrollUpButton,
-  Trigger,
-  Value,
-  Viewport,
-} from '@radix-ui/react-select'
+import * as SelectPrimitive from '@radix-ui/react-select'
 
 export function Select<TItem extends string>({
   items,
@@ -23,45 +8,45 @@ export function Select<TItem extends string>({
   triggerPlaceholder,
 }: SelectProps<TItem>) {
   return (
-    <Root onValueChange={onChange} value={selectedItem}>
-      <Trigger aria-label={triggerLabel}>
-        <Value placeholder={triggerPlaceholder} />
-        <Icon />
-      </Trigger>
-      <Portal>
-        <Content>
-          <ScrollUpButton />
-          <Viewport>
+    <SelectPrimitive.Root onValueChange={onChange} value={selectedItem}>
+      <SelectPrimitive.Trigger aria-label={triggerLabel}>
+        <SelectPrimitive.Value placeholder={triggerPlaceholder} />
+        <SelectPrimitive.Icon />
+      </SelectPrimitive.Trigger>
+      <SelectPrimitive.Portal>
+        <SelectPrimitive.Content>
+          <SelectPrimitive.ScrollUpButton />
+          <SelectPrimitive.Viewport>
             {Array.isArray(items)
               ? items.map((item) => <SelectItem key={item} item={item} />)
               : Object.entries(items).map(([groupName, groupItems]) => (
                   <SelectGroup key={groupName} label={groupName} items={groupItems} />
                 ))}
-          </Viewport>
-          <ScrollDownButton />
-        </Content>
-      </Portal>
-    </Root>
+          </SelectPrimitive.Viewport>
+          <SelectPrimitive.ScrollDownButton />
+        </SelectPrimitive.Content>
+      </SelectPrimitive.Portal>
+    </SelectPrimitive.Root>
   )
 }
 
 function SelectGroup<TItem extends string>({ items, label }: SelectGroupProps<TItem>) {
   return (
-    <Group>
-      <Label>{label}</Label>
+    <SelectPrimitive.Group>
+      <SelectPrimitive.Label>{label}</SelectPrimitive.Label>
       {items.map((item) => (
         <SelectItem key={item} item={item} />
       ))}
-    </Group>
+    </SelectPrimitive.Group>
   )
 }
 
 function SelectItem<TItem extends string>({ item }: SelectItemProps<TItem>) {
   return (
-    <Item value={item}>
-      <ItemText>{item}</ItemText>
-      <ItemIndicator />
-    </Item>
+    <SelectPrimitive.Item value={item}>
+      <SelectPrimitive.ItemText>{item}</SelectPrimitive.ItemText>
+      <SelectPrimitive.ItemIndicator />
+    </SelectPrimitive.Item>
   )
 }
 

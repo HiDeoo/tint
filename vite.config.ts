@@ -12,13 +12,14 @@ export default defineConfig({
       presets: [presetUno()],
       theme: {
         breakpoints: {
-          lg: '512px',
+          xss: '480px',
+          xs: '512px',
         },
       },
       transformers: [transformerVariantGroup()],
       variants: [
         (matcher) => {
-          const prefix = 'data-state-checked:'
+          const prefix = 'ds-active:'
 
           if (!matcher.startsWith(prefix)) {
             return matcher
@@ -26,7 +27,19 @@ export default defineConfig({
 
           return {
             matcher: matcher.slice(prefix.length),
-            selector: (selector) => `${selector}[data-state="checked"]`,
+            selector: (selector) => `${selector}[data-state="active"]`,
+          }
+        },
+        (matcher) => {
+          const prefix = 'ds-inactive:'
+
+          if (!matcher.startsWith(prefix)) {
+            return matcher
+          }
+
+          return {
+            matcher: matcher.slice(prefix.length),
+            selector: (selector) => `${selector}[data-state="inactive"]`,
           }
         },
       ],

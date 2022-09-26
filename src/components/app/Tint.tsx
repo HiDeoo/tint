@@ -31,7 +31,6 @@ export function Tint() {
 
   return (
     <main>
-      <br />
       <ColorPreview color={editorColor} onPick={setEditorColor} />
       <ColorEditor color={editorColor} onChange={setEditorColor} />
       <ColorHistory onSelect={setEditorColor} />

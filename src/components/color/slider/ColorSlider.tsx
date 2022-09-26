@@ -1,4 +1,4 @@
-import { Root, Thumb, Track } from '@radix-ui/react-slider'
+import * as SliderPrimitive from '@radix-ui/react-slider'
 import clsx from 'clsx'
 import { type CSSProperties } from 'react'
 
@@ -12,17 +12,16 @@ export function ColorSlider({ className, max, onChange, style, value }: ColorSli
   }
 
   return (
-    <Root
-      className="relative flex h-4 touch-none select-none"
+    <SliderPrimitive.Root
+      className="relative flex h-5 touch-none select-none"
       min={0}
       max={max}
       onValueChange={handleChange}
       value={[value]}
     >
-      {/* // TODO Remove red */}
-      <Track className={clsx('relative h-4 w-full grow rounded-full', className)} style={style} />
-      <Thumb className="block h-4 w-4 rounded-full bg-white" />
-    </Root>
+      <SliderPrimitive.Track className={clsx('h-4.5 relative w-full grow rounded-full', className)} style={style} />
+      <SliderPrimitive.Thumb className="h-4.5 w-4.5 block rounded-full bg-white" />
+    </SliderPrimitive.Root>
   )
 }
 
