@@ -9,7 +9,7 @@ export function ColorFormatter({ color }: ColorFormatterProps) {
   }
 
   return (
-    <section className="flex justify-between py-3">
+    <section className="flex justify-between py-2">
       <div className="text-lg font-medium">{getColorString(color, editorFormatSignal.value)}</div>
       <Select
         items={COLOR_FORMATS}
