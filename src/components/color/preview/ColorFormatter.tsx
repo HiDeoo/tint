@@ -10,7 +10,7 @@ export function ColorFormatter({ color }: ColorFormatterProps) {
 
   return (
     <section className="flex items-center justify-between py-2">
-      <div className="text-xl font-medium">{getColorString(color, editorFormatSignal.value)}</div>
+      <div className="text-2xl font-medium">{getColorString(color, editorFormatSignal.value)}</div>
       <Select
         items={GROUPED_COLOR_FORMATS}
         onChange={handleChange}

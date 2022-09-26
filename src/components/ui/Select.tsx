@@ -1,5 +1,6 @@
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons'
 import * as SelectPrimitive from '@radix-ui/react-select'
+import clsx from 'clsx'
 import { Fragment } from 'react'
 
 export function Select<TItem extends string>({
@@ -13,7 +14,10 @@ export function Select<TItem extends string>({
     <SelectPrimitive.Root onValueChange={onChange} value={selectedItem}>
       <SelectPrimitive.Trigger
         aria-label={triggerLabel}
-        className="flex items-center gap-5 rounded-md bg-zinc-700/75 py-1.5 pl-3.5 pr-3 hover:bg-zinc-700"
+        className={clsx(
+          'flex items-center gap-5 rounded-md bg-zinc-700/75 py-2.5 pl-3.5 pr-3 hover:bg-zinc-700',
+          'focus-visible:(ring-2 outline-none) ring-blue-600 ring-offset-2 ring-offset-zinc-900'
+        )}
       >
         <SelectPrimitive.Value placeholder={triggerPlaceholder} />
         <SelectPrimitive.Icon>

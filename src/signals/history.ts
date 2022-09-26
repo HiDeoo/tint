@@ -11,8 +11,8 @@ export function addColorToHistory(color: Color) {
   historySignal.value = [
     serializedColor,
     ...historySignal.value
-      .slice(0, maxHistorySize - 1)
-      .filter((historyEntry) => !isEqualSerializedColor(historyEntry, serializedColor)),
+      .filter((historyEntry) => !isEqualSerializedColor(historyEntry, serializedColor))
+      .slice(0, maxHistorySize - 1),
   ]
 }
 

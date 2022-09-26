@@ -27,7 +27,13 @@ export function ColorSlider({ className, max, onChange, style, transparent = fal
       >
         {transparent ? <Checkerboard className="right-[8px] " /> : null}
       </SliderPrimitive.Track>
-      <SliderPrimitive.Thumb className="h-4.5 w-4.5 block rounded-full bg-white" />
+      <SliderPrimitive.Thumb
+        className={clsx(
+          'h-4.5 w-4.5 bg-transprent block rounded-full border-2 border-white',
+          'shadow-[0_1px_2px_0_rgb(0_0_0/0.75),inset_0_1px_2px_0_rgb(0_0_0/0.75)]',
+          'focus-visible:(ring-2 ring-offset-zinc-900) outline-none ring-blue-600 ring-offset-2'
+        )}
+      />
     </SliderPrimitive.Root>
   )
 }

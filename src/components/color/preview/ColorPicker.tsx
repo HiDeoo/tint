@@ -1,3 +1,5 @@
+import clsx from 'clsx'
+
 import { Checkerboard } from '@/components/color/slider/Checkerboard'
 import { type Color, getColorString } from '@/libs/color'
 import { pickColor } from '@/libs/picker'
@@ -11,7 +13,11 @@ export function ColorPicker({ color, onPick }: ColorPickerProps) {
 
   return (
     <button
-      className="relative mb-2 h-32 w-full overflow-hidden rounded-md"
+      className={clsx(
+        'relative mb-2 h-32 w-full overflow-hidden rounded-md ring-blue-600 ring-offset-2 ring-offset-zinc-900',
+        'hover:(ring-2.5)',
+        'focus-visible:(ring-2.5 outline-none)'
+      )}
       onClick={handleClick}
       style={{ backgroundColor: getColorString(color) }}
     >
