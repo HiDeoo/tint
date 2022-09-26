@@ -1,0 +1,7 @@
+::selection {
+  background: hsl(221 83% 53%);
+}
+
+::-moz-selection {
+  background: hsl(221 83% 53%);
+}

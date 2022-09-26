@@ -1,3 +1,5 @@
+import '@/styles/global.css'
+
 import { Tint } from '@/components/app/Tint'
 import { Unavailable } from '@/components/app/Unavailable'
 import { isColorPickerAvailable } from '@/libs/picker'
