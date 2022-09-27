@@ -1,3 +1,5 @@
+/// <reference types="vitest" />
+
 import react from '@vitejs/plugin-react'
 import { presetUno, transformerVariantGroup } from 'unocss'
 import Unocss from 'unocss/vite'
@@ -68,4 +70,7 @@ export default defineConfig({
       },
     }),
   ],
+  test: {
+    environment: 'jsdom',
+  },
 })
