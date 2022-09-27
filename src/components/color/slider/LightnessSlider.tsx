@@ -14,6 +14,7 @@ export function LightnessSlider({ color, onChange }: LightnessSliderProps) {
 
   return (
     <ColorSlider
+      label="Lightness"
       max={100}
       onChange={handleChange}
       style={{ background: `linear-gradient(to right, ${lColor}, ${mColor}, ${rColor})` }}

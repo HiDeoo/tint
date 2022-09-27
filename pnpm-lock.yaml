@@ -10,6 +10,7 @@ specifiers:
   '@radix-ui/react-select': 1.0.0
   '@radix-ui/react-slider': 1.0.0
   '@radix-ui/react-tabs': 1.0.0
+  '@radix-ui/react-visually-hidden': 1.0.0
   '@types/prettier': 2.7.0
   '@types/react': 18.0.20
   '@types/react-dom': 18.0.6
@@ -38,6 +39,7 @@ dependencies:
   '@radix-ui/react-select': 1.0.0_7ey2zzynotv32rpkwno45fsx4e
   '@radix-ui/react-slider': 1.0.0_biqbaboplfbrettd7655fr4n2y
   '@radix-ui/react-tabs': 1.0.0_biqbaboplfbrettd7655fr4n2y
+  '@radix-ui/react-visually-hidden': 1.0.0_biqbaboplfbrettd7655fr4n2y
   '@unocss/reset': 0.45.22
   clsx: 1.2.1
   colord: 2.9.3

@@ -8,7 +8,7 @@ export function SaturationComponent({ color, onChange }: SaturationComponentProp
     onChange(colorWithSaturation(color, newValue))
   }
 
-  return <ColorComponent max={100} onChange={handleChange} value={hslaColor.s} />
+  return <ColorComponent label="Saturation" max={100} onChange={handleChange} value={hslaColor.s} />
 }
 
 interface SaturationComponentProps {

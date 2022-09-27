@@ -1,6 +1,6 @@
 import { colord, type HslaColor, type Colord, type RgbaColor } from 'colord'
 
-import { type ColorFormat } from '@/constants/color'
+import { RGBA_COMPONENT_NAMES, type ColorFormat } from '@/constants/color'
 
 export function colorFromSerializedColor(serializedColor: SerializedColor): Color {
   return colord(serializedColor)
@@ -73,6 +73,10 @@ export function getColorString(color: Color, format: ColorFormat = 'hsl'): strin
       throw new Error(`Unsupported color format '${format}'.`)
     }
   }
+}
+
+export function getRgbaComponentName(componentName: RgbaComponent) {
+  return RGBA_COMPONENT_NAMES[componentName]
 }
 
 export function isEqualSerializedColor(lSerializedColor: SerializedColor, rSerializedColor: SerializedColor): boolean {

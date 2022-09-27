@@ -4,7 +4,7 @@ import { type CSSProperties } from 'react'
 
 import { Checkerboard } from '@/components/color/slider/Checkerboard'
 
-export function ColorSlider({ className, max, onChange, style, transparent = false, value }: ColorSliderProps) {
+export function ColorSlider({ className, label, max, onChange, style, transparent = false, value }: ColorSliderProps) {
   function handleChange(value: number[]) {
     const newValue = value[0]
 
@@ -15,6 +15,7 @@ export function ColorSlider({ className, max, onChange, style, transparent = fal
 
   return (
     <SliderPrimitive.Root
+      aria-label={label}
       className="relative flex h-5 touch-none select-none"
       min={0}
       max={max}
@@ -40,6 +41,7 @@ export function ColorSlider({ className, max, onChange, style, transparent = fal
 
 interface ColorSliderProps {
   className?: string
+  label: string
   max: number
   onChange: (newValue: number) => void
   style?: CSSProperties

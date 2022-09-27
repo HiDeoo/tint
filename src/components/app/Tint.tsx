@@ -37,8 +37,12 @@ export function Tint() {
       {needRefresh && (
         <div>
           <div>New Update</div>
-          <button onClick={() => updateServiceWorker(true)}>Reload</button>
-          <button onClick={() => close()}>Close</button>
+          <button type="button" onClick={() => updateServiceWorker(true)}>
+            Reload
+          </button>
+          <button type="button" onClick={() => close()}>
+            Close
+          </button>
         </div>
       )}
     </main>

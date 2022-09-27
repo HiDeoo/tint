@@ -9,6 +9,7 @@ export function HueSlider({ color, onChange }: HueSliderProps) {
   return (
     <ColorSlider
       className="[background:linear-gradient(to_right,#ff0000_0%,#ffff00_17%,#00ff00_33%,#00ffff_50%,#0000ff_67%,#ff00ff_83%,#ff0000_100%)]"
+      label="Hue"
       max={360}
       onChange={handleChange}
       value={color.hue()}

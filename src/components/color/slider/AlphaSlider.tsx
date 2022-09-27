@@ -11,6 +11,7 @@ export function AlphaSlider({ color, onChange }: AlphaSliderProps) {
 
   return (
     <ColorSlider
+      label="Alpha"
       max={100}
       onChange={handleChange}
       style={{ background: `linear-gradient(to right, ${lColor}, ${rColor})` }}

@@ -6,7 +6,7 @@ export function HueComponent({ color, onChange }: HueComponentProps) {
     onChange(colorWithHue(color, newValue))
   }
 
-  return <ColorComponent max={360} onChange={handleChange} value={color.hue()} />
+  return <ColorComponent label="Hue" max={360} onChange={handleChange} value={color.hue()} />
 }
 
 interface HueComponentProps {

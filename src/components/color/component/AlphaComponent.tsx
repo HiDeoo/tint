@@ -6,7 +6,7 @@ export function AlphaComponent({ color, onChange }: AlphaComponentProps) {
     onChange(colorWithRgbaComponents(color, { a: newValue / 100 }))
   }
 
-  return <ColorComponent max={100} onChange={handleChange} value={Math.round(color.alpha() * 100)} />
+  return <ColorComponent label="Alpha" max={100} onChange={handleChange} value={Math.round(color.alpha() * 100)} />
 }
 
 interface AlphaComponentProps {

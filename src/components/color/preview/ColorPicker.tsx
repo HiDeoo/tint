@@ -1,3 +1,4 @@
+import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
 import clsx from 'clsx'
 
 import { Checkerboard } from '@/components/color/slider/Checkerboard'
@@ -20,7 +21,10 @@ export function ColorPicker({ color, onPick }: ColorPickerProps) {
       )}
       onClick={handleClick}
       style={{ backgroundColor: getColorString(color) }}
+      title="Pick a new color"
+      type="button"
     >
+      <VisuallyHidden.Root>Pick a new color</VisuallyHidden.Root>
       <Checkerboard className="rounded-lg" />
     </button>
   )

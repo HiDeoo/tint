@@ -13,6 +13,7 @@ export function SaturationSlider({ color, onChange }: SaturationSliderProps) {
 
   return (
     <ColorSlider
+      label="Saturation"
       max={100}
       onChange={handleChange}
       style={{ background: `linear-gradient(to right, ${lColor}, ${rColor})` }}

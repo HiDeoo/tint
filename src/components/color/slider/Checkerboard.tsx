@@ -7,6 +7,7 @@ const alphaPattern = encodeURIComponent(
 export function Checkerboard({ className }: CheckerboardProps) {
   return (
     <div
+      aria-hidden
       className={clsx('absolute inset-0 -z-[1] bg-zinc-50', className)}
       style={{ backgroundImage: `url("data:image/svg+xml,${alphaPattern}")` }}
     />

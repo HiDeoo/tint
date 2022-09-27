@@ -5,6 +5,7 @@ import {
   getColorString,
   type RgbaComponent,
   colorWithRgbaComponents,
+  getRgbaComponentName,
 } from '@/libs/color'
 
 export function RgbSlider({ color, component, onChange }: RgbSliderProps) {
@@ -19,6 +20,7 @@ export function RgbSlider({ color, component, onChange }: RgbSliderProps) {
 
   return (
     <ColorSlider
+      label={getRgbaComponentName(component)}
       max={255}
       onChange={handleChange}
       style={{ background: `linear-gradient(to right, ${lColor}, ${rColor})` }}

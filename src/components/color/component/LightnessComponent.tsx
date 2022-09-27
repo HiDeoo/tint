@@ -8,7 +8,7 @@ export function LightnessComponent({ color, onChange }: LightnessComponentProps)
     onChange(colorWithLightness(color, newValue))
   }
 
-  return <ColorComponent max={100} onChange={handleChange} value={hslaColor.l} />
+  return <ColorComponent label="Lightness" max={100} onChange={handleChange} value={hslaColor.l} />
 }
 
 interface LightnessComponentProps {
