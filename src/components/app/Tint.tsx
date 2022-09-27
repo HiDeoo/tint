@@ -9,10 +9,10 @@ import { colorFromSerializedColor, getSerializedColor, type Color } from '@/libs
 import { editorColorSignal } from '@/signals/editor'
 
 export function Tint() {
-  useShortcuts()
-
   const [editorColor, setEditorColor] = useState<Color>(() => colorFromSerializedColor(editorColorSignal.value))
   const deferredEditorColor = useDeferredValue(editorColor)
+
+  useShortcuts(setEditorColor)
 
   useEffect(() => {
     editorColorSignal.value = getSerializedColor(deferredEditorColor)

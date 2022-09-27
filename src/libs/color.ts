@@ -1,12 +1,27 @@
-import { colord, type HslaColor, type Colord, type RgbaColor } from 'colord'
+import { colord, type HslaColor, type Colord, type RgbaColor, getFormat } from 'colord'
 
-import { RGBA_COMPONENT_NAMES, type ColorFormat } from '@/constants/color'
+import { COLOR_FORMATS, RGBA_COMPONENT_NAMES, type ColorFormat } from '@/constants/color'
 
 export function colorFromSerializedColor(serializedColor: SerializedColor): Color {
   return colord(serializedColor)
 }
 
+// The color string is assumed to be a valid & supported format.
 export function colorFromString(colorStr: string): Color {
+  return colord(colorStr)
+}
+
+export function colorFromStringInput(colorStr: string | undefined): Color {
+  if (!colorStr) {
+    throw new Error('Color string is not defined.')
+  }
+
+  const format: string | undefined = getFormat(colorStr)
+
+  if (!format || !isValidColorFormat(format)) {
+    throw new Error('Invalid color format.')
+  }
+
   return colord(colorStr)
 }
 
@@ -86,6 +101,10 @@ export function isEqualSerializedColor(lSerializedColor: SerializedColor, rSeria
     lSerializedColor.l === rSerializedColor.l &&
     lSerializedColor.a === rSerializedColor.a
   )
+}
+
+function isValidColorFormat(format: string): format is ColorFormat {
+  return COLOR_FORMATS.includes(format as ColorFormat)
 }
 
 export type Color = Colord
