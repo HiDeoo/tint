@@ -3,7 +3,8 @@ import { useRegisterSW } from 'virtual:pwa-register/react'
 
 import { ColorEditor } from '@/components/color/editor/ColorEditor'
 import { ColorHistory } from '@/components/color/history/ColorHistory'
-import { ColorPreview } from '@/components/color/preview/ColorPreview'
+import { ColorPicker } from '@/components/color/picker/ColorPicker'
+import { ColorToolbar } from '@/components/color/toolbar/ColorToolbar'
 import { useShortcuts } from '@/hooks/useShorcuts'
 import { colorFromSerializedColor, getSerializedColor, type Color } from '@/libs/color'
 import { editorColorSignal } from '@/signals/editor'
@@ -31,7 +32,8 @@ export function Tint() {
 
   return (
     <main>
-      <ColorPreview color={editorColor} onPick={setEditorColor} />
+      <ColorPicker color={editorColor} onPick={setEditorColor} />
+      <ColorToolbar color={editorColor} />
       <ColorEditor color={editorColor} onChange={setEditorColor} />
       <ColorHistory onSelect={setEditorColor} />
       {needRefresh && (

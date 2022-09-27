@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, test } from 'vitest'
 
-import { ColorFormatter } from '@/components/color/preview/ColorFormatter'
+import { ColorFormatter } from '@/components/color/toolbar/ColorFormatter'
 import { COLOR_FORMATS, type ColorFormat } from '@/constants/color'
 import { colorFromSerializedColor, type SerializedColor } from '@/libs/color'
 import { editorFormatSignal } from '@/signals/editor'
