@@ -1,12 +1,17 @@
 import { type IconProps } from '@radix-ui/react-icons/dist/types'
-import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
+import * as VisuallyHiddenPrimitive from '@radix-ui/react-visually-hidden'
 import clsx from 'clsx'
+import { forwardRef } from 'react'
 
-export function IconButton({ icon, title, ...props }: IconButtonProps) {
+export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(function IconButton(
+  { icon, title, ...props },
+  ref
+) {
   const IconComponent = icon
 
   return (
     <button
+      ref={ref}
       type="button"
       {...props}
       className={clsx(
@@ -14,11 +19,11 @@ export function IconButton({ icon, title, ...props }: IconButtonProps) {
         'focus-visible:(ring-2 outline-none) ring-blue-600 ring-offset-2 ring-offset-zinc-900'
       )}
     >
-      {title && title.length > 0 ? <VisuallyHidden.Root>{title}</VisuallyHidden.Root> : null}
+      {title && title.length > 0 ? <VisuallyHiddenPrimitive.Root>{title}</VisuallyHiddenPrimitive.Root> : null}
       <IconComponent aria-hidden />
     </button>
   )
-}
+})
 
 interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   icon: React.ComponentType<IconProps>

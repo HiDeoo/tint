@@ -1,4 +1,4 @@
-import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
+import * as VisuallyHiddenPrimitive from '@radix-ui/react-visually-hidden'
 import clsx from 'clsx'
 
 import { Checkerboard } from '@/components/color/slider/Checkerboard'
@@ -24,7 +24,7 @@ export function ColorPicker({ color, onPick }: ColorPickerProps) {
       title="Pick a new color"
       type="button"
     >
-      <VisuallyHidden.Root>Pick a new color</VisuallyHidden.Root>
+      <VisuallyHiddenPrimitive.Root>Pick a new color</VisuallyHiddenPrimitive.Root>
       <Checkerboard className="rounded-lg" />
     </button>
   )

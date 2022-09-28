@@ -1,4 +1,4 @@
-import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
+import * as VisuallyHiddenPrimitive from '@radix-ui/react-visually-hidden'
 import clsx from 'clsx'
 
 import { type Color, getColorString } from '@/libs/color'
@@ -22,7 +22,7 @@ export function HistoryEntry({ color, onSelect }: HistoryEntryProps) {
       title={colorStr}
       type="button"
     >
-      <VisuallyHidden.Root>{colorStr}</VisuallyHidden.Root>
+      <VisuallyHiddenPrimitive.Root>{colorStr}</VisuallyHiddenPrimitive.Root>
     </button>
   )
 }

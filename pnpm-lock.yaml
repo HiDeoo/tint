@@ -2,10 +2,11 @@ lockfileVersion: 5.4
 
 specifiers:
   '@babel/core': 7.19.1
-  '@hideoo/eslint-config': 0.8.0
+  '@hideoo/eslint-config': 0.9.0
   '@hideoo/prettier-config': 0.1.1
   '@hideoo/tsconfig': 0.1.0
   '@preact/signals-react': 1.1.0
+  '@radix-ui/react-dialog': 1.0.0
   '@radix-ui/react-icons': 1.1.1
   '@radix-ui/react-select': 1.0.0
   '@radix-ui/react-slider': 1.0.0
@@ -38,6 +39,7 @@ specifiers:
 
 dependencies:
   '@preact/signals-react': 1.1.0_react@18.2.0
+  '@radix-ui/react-dialog': 1.0.0_7ey2zzynotv32rpkwno45fsx4e
   '@radix-ui/react-icons': 1.1.1_react@18.2.0
   '@radix-ui/react-select': 1.0.0_7ey2zzynotv32rpkwno45fsx4e
   '@radix-ui/react-slider': 1.0.0_biqbaboplfbrettd7655fr4n2y
@@ -52,7 +54,7 @@ dependencies:
 
 devDependencies:
   '@babel/core': 7.19.1
-  '@hideoo/eslint-config': 0.8.0_irgkl5vooow2ydyo6aokmferha
+  '@hideoo/eslint-config': 0.9.0_irgkl5vooow2ydyo6aokmferha
   '@hideoo/prettier-config': 0.1.1
   '@hideoo/tsconfig': 0.1.0
   '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
@@ -1349,8 +1351,8 @@ packages:
       - supports-color
     dev: true
 
-  /@hideoo/eslint-config-base/0.8.0_cazolw5deywtggdngpdoxq6qya:
-    resolution: {integrity: sha512-VFRoINLGcugaP8UuG0kxaTrivfAYQ3ot0ETU9pKhnrqVOrMDuBa6GiM5w3B9Wz4DjKS5q0tyUaH1FF9skyC1bg==}
+  /@hideoo/eslint-config-base/0.9.0_cazolw5deywtggdngpdoxq6qya:
+    resolution: {integrity: sha512-6Dz4qwvfOyi6s1oVMNA3bhXzSS4IVfiotJoPhQiZjFiEKv15TqZ/imkECHpHAjP6/uGsUGH1ui3VcOgeuFqYVw==}
     peerDependencies:
       eslint: '>=8.0.0'
     dependencies:
@@ -1366,12 +1368,12 @@ packages:
       - supports-color
     dev: true
 
-  /@hideoo/eslint-config-react/0.8.0_irgkl5vooow2ydyo6aokmferha:
-    resolution: {integrity: sha512-gQ/IZqULLIUtX26utCyaQZh/oYhE4Byl5e3cn+MlEnsvpJWNMzIvwll25QzQU0oIm8SWEB7HF3eoRGfPsPJIaA==}
+  /@hideoo/eslint-config-react/0.9.0_irgkl5vooow2ydyo6aokmferha:
+    resolution: {integrity: sha512-JWM3Ed3+uQ2nSszgEN1N8qorF3Ovyt3iEq2nRcNkFh20vW62RJMG2ak6DZLAian8L8bvnhaFQjwQBbd/hENnLg==}
     peerDependencies:
       eslint: '>=8.0.0'
     dependencies:
-      '@hideoo/eslint-config-typescript': 0.8.0_irgkl5vooow2ydyo6aokmferha
+      '@hideoo/eslint-config-typescript': 0.9.0_irgkl5vooow2ydyo6aokmferha
       eslint: 8.23.1
       eslint-plugin-jsx-a11y: 6.6.0_eslint@8.23.1
       eslint-plugin-react: 7.30.1_eslint@8.23.1
@@ -1381,13 +1383,13 @@ packages:
       - typescript
     dev: true
 
-  /@hideoo/eslint-config-typescript/0.8.0_irgkl5vooow2ydyo6aokmferha:
-    resolution: {integrity: sha512-plgVrgxBbaAf4oQoyAhbn3J28KYwV6SX5Zs6Qju4U2dwGddscsoxtLUs36TSSoXVkk5MBJ23HLzEpw37g0Itgw==}
+  /@hideoo/eslint-config-typescript/0.9.0_irgkl5vooow2ydyo6aokmferha:
+    resolution: {integrity: sha512-yTpk22GeA/V1l1xIX9QjvM11iTnll+xDGT3z6/RMF/0T6ALNqLczEsgUr2ah+CLwQ3qxilKNBiTJoQx0hy3Ngg==}
     peerDependencies:
       eslint: '>=8.0.0'
       typescript: '>=4.0.2'
     dependencies:
-      '@hideoo/eslint-config-base': 0.8.0_cazolw5deywtggdngpdoxq6qya
+      '@hideoo/eslint-config-base': 0.9.0_cazolw5deywtggdngpdoxq6qya
       '@typescript-eslint/eslint-plugin': 5.30.0_qx6tesxtp3svxkyigc7x7vxxve
       '@typescript-eslint/parser': 5.30.0_irgkl5vooow2ydyo6aokmferha
       eslint: 8.23.1
@@ -1399,12 +1401,12 @@ packages:
       - supports-color
     dev: true
 
-  /@hideoo/eslint-config/0.8.0_irgkl5vooow2ydyo6aokmferha:
-    resolution: {integrity: sha512-o7ntUvFG7GKZ8cmVP/RzEnhR9VwktWsCG4krXhzsiX3ZsJFIakpTz1/U0MgAI3M3UWQjOKB4NYo0tJ/IwShuPg==}
+  /@hideoo/eslint-config/0.9.0_irgkl5vooow2ydyo6aokmferha:
+    resolution: {integrity: sha512-mvrCT9QGHRLVSUucY8ToC+prR+9V0aprRNq9WWp7uMuKuuMJHdibUEIvykWpUj1f0fX46kXQa6dNygbvNg2ROA==}
     peerDependencies:
       eslint: '>=8.0.0'
     dependencies:
-      '@hideoo/eslint-config-react': 0.8.0_irgkl5vooow2ydyo6aokmferha
+      '@hideoo/eslint-config-react': 0.9.0_irgkl5vooow2ydyo6aokmferha
       eslint: 8.23.1
     transitivePeerDependencies:
       - eslint-import-resolver-webpack
@@ -1599,6 +1601,33 @@ packages:
     dependencies:
       '@babel/runtime': 7.19.0
       react: 18.2.0
+    dev: false
+
+  /@radix-ui/react-dialog/1.0.0_7ey2zzynotv32rpkwno45fsx4e:
+    resolution: {integrity: sha512-Yn9YU+QlHYLWwV1XfKiqnGVpWYWk6MeBVM6x/bcoyPvxgjQGoeT35482viLPctTMWoMw0PoHgqfSox7Ig+957Q==}
+    peerDependencies:
+      react: ^16.8 || ^17.0 || ^18.0
+      react-dom: ^16.8 || ^17.0 || ^18.0
+    dependencies:
+      '@babel/runtime': 7.19.0
+      '@radix-ui/primitive': 1.0.0
+      '@radix-ui/react-compose-refs': 1.0.0_react@18.2.0
+      '@radix-ui/react-context': 1.0.0_react@18.2.0
+      '@radix-ui/react-dismissable-layer': 1.0.0_biqbaboplfbrettd7655fr4n2y
+      '@radix-ui/react-focus-guards': 1.0.0_react@18.2.0
+      '@radix-ui/react-focus-scope': 1.0.0_biqbaboplfbrettd7655fr4n2y
+      '@radix-ui/react-id': 1.0.0_react@18.2.0
+      '@radix-ui/react-portal': 1.0.0_biqbaboplfbrettd7655fr4n2y
+      '@radix-ui/react-presence': 1.0.0_biqbaboplfbrettd7655fr4n2y
+      '@radix-ui/react-primitive': 1.0.0_biqbaboplfbrettd7655fr4n2y
+      '@radix-ui/react-slot': 1.0.0_react@18.2.0
+      '@radix-ui/react-use-controllable-state': 1.0.0_react@18.2.0
+      aria-hidden: 1.2.1_w5j4k42lgipnm43s3brx6h3c34
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      react-remove-scroll: 2.5.4_w5j4k42lgipnm43s3brx6h3c34
+    transitivePeerDependencies:
+      - '@types/react'
     dev: false
 
   /@radix-ui/react-direction/1.0.0_react@18.2.0:

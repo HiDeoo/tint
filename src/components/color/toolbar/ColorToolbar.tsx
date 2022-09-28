@@ -1,8 +1,6 @@
-import { GearIcon } from '@radix-ui/react-icons'
-
 import { ColorFormatPicker } from '@/components/color/toolbar/ColorFormatPicker'
 import { ColorFormatter } from '@/components/color/toolbar/ColorFormatter'
-import { IconButton } from '@/components/ui/IconButton'
+import { SettingsDialog } from '@/components/settings/SettingsDialog'
 import { type Color } from '@/libs/color'
 
 export function ColorToolbar({ color }: ColorToolbarProps) {
@@ -11,7 +9,7 @@ export function ColorToolbar({ color }: ColorToolbarProps) {
       <ColorFormatter color={color} />
       <div className="grow" />
       <ColorFormatPicker />
-      <IconButton icon={GearIcon} title="Settings" />
+      <SettingsDialog />
     </section>
   )
 }
