@@ -13,11 +13,11 @@ export function Checkbox({ checked, id, label, onChange }: CheckboxProps) {
   }
 
   return (
-    <div className="group mb-2 flex items-center last-of-type:mb-0">
+    <div className="group mb-2 flex items-start last-of-type:mb-0">
       <CheckboxPrimitive.Root
         checked={checked}
         className={clsx(
-          'flex h-6 w-6 items-center justify-center rounded-md bg-zinc-700 bg-red-900 group-hover:bg-zinc-600/50',
+          'relative -top-[2px] flex h-6 w-6 items-center justify-center rounded-md bg-zinc-700 group-hover:bg-zinc-600/50',
           'focus-visible:(ring-2 ring-offset-zinc-900) outline-none ring-blue-600 ring-offset-2'
         )}
         id={id}

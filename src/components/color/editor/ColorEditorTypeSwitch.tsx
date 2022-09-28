@@ -8,11 +8,21 @@ export function ColorEditorTypeSwitch() {
   )
 
   return (
-    <TabsPrimitive.TabsList aria-label="Color editor" id="color-editor-type-switch" className="xss:grid-cols-2 grid">
-      <TabsPrimitive.TabsTrigger className={clsx(triggerClassName, 'rounded-l-md')} value="hsla">
+    <TabsPrimitive.TabsList
+      aria-label="Color editor"
+      className="xss:grid-cols-2 mr-3 grid"
+      id="color-editor-type-switch"
+    >
+      <TabsPrimitive.TabsTrigger
+        className={clsx(triggerClassName, 'xss:(rounded-l-md rounded-tr-none) rounded-t-md')}
+        value="hsla"
+      >
         HSLA
       </TabsPrimitive.TabsTrigger>
-      <TabsPrimitive.TabsTrigger className={clsx(triggerClassName, 'rounded-r-md')} value="rgba">
+      <TabsPrimitive.TabsTrigger
+        className={clsx(triggerClassName, 'xss:(rounded-r-md rounded-bl-none) rounded-b-md')}
+        value="rgba"
+      >
         RGBA
       </TabsPrimitive.TabsTrigger>
     </TabsPrimitive.TabsList>

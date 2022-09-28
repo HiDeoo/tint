@@ -5,7 +5,7 @@ import { type Color } from '@/libs/color'
 
 export function ColorToolbar({ color }: ColorToolbarProps) {
   return (
-    <section className="flex items-center gap-2 py-2">
+    <section className="flex max-w-[100vw] items-center gap-2 py-2">
       <ColorFormatter color={color} />
       <div className="grow" />
       <ColorFormatPicker />

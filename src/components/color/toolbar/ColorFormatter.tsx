@@ -8,9 +8,9 @@ export function ColorFormatter({ color }: ColorFormatterProps) {
   const colorStr = getColorString(color, editorFormatSignal.value, { hexLowercase: settingsHexLowercaseSignal.value })
 
   return (
-    <div className="text-2xl font-medium">
+    <div className="flex min-w-0 text-2xl font-medium">
       <VisuallyHiddenPrimitive.Root>Current color</VisuallyHiddenPrimitive.Root>
-      <div>{colorStr}</div>
+      <div className="truncate">{colorStr}</div>
     </div>
   )
 }
