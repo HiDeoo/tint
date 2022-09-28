@@ -3,7 +3,7 @@ import { editorFormatSignal } from '@/signals/editor'
 import { addColorToHistory } from '@/signals/history'
 
 export function writeColorToClipboard(color: Color) {
-  const formattedColor = getColorString(color, editorFormatSignal.value)
+  const formattedColor = getColorString(color, editorFormatSignal.value, true)
 
   addColorToHistory(color)
 

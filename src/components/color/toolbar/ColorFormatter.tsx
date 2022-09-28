@@ -2,10 +2,9 @@ import * as VisuallyHiddenPrimitive from '@radix-ui/react-visually-hidden'
 
 import { getColorString, type Color } from '@/libs/color'
 import { editorFormatSignal } from '@/signals/editor'
-import { settingsHexLowercaseSignal } from '@/signals/settings'
 
 export function ColorFormatter({ color }: ColorFormatterProps) {
-  const colorStr = getColorString(color, editorFormatSignal.value, { hexLowercase: settingsHexLowercaseSignal.value })
+  const colorStr = getColorString(color, editorFormatSignal.value, true)
 
   return (
     <div className="flex min-w-0 text-2xl font-medium">
