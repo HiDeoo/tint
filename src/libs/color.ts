@@ -1,7 +1,7 @@
 import { colord, type HslaColor, type Colord, type RgbaColor, getFormat } from 'colord'
 
 import { COLOR_FORMATS, RGBA_COMPONENT_NAMES, type ColorFormat } from '@/constants/color'
-import { settingsHexLowercaseSignal } from '@/signals/settings'
+import { settingsHexLowercaseSignal, settingsHexPrefixSignal } from '@/signals/settings'
 
 export function colorFromSerializedColor(serializedColor: SerializedColor): Color {
   return colord(serializedColor)
@@ -83,10 +83,17 @@ export function getColorString(color: Color, format: ColorFormat = 'hsl', useSet
       return color.toHslString()
     }
     case 'hex': {
-      const hexStr = color.toHex()
-      const hexLowercase = useSettings ? settingsHexLowercaseSignal.value : true
+      let hexStr = color.toHex()
 
-      return hexLowercase ? hexStr : hexStr.toUpperCase()
+      if (useSettings && !settingsHexLowercaseSignal.value) {
+        hexStr = hexStr.toUpperCase()
+      }
+
+      if (useSettings && !settingsHexPrefixSignal.value) {
+        hexStr = hexStr.replace('#', '')
+      }
+
+      return hexStr
     }
     default: {
       throw new Error(`Unsupported color format '${format}'.`)

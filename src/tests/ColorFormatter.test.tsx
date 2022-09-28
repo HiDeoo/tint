@@ -1,11 +1,11 @@
 import { render, screen } from '@testing-library/react'
-import { describe, expect, test } from 'vitest'
+import { beforeEach, describe, expect, test } from 'vitest'
 
 import { ColorFormatter } from '@/components/color/toolbar/ColorFormatter'
 import { COLOR_FORMATS, type ColorFormat } from '@/constants/color'
 import { colorFromSerializedColor, type SerializedColor } from '@/libs/color'
 import { editorFormatSignal } from '@/signals/editor'
-import { settingsHexLowercaseSignal } from '@/signals/settings'
+import { settingsHexLowercaseSignal, settingsHexPrefixSignal } from '@/signals/settings'
 
 const testColors: [SerializedColor, Record<ColorFormat, string>][] = [
   [
@@ -30,6 +30,11 @@ const testColors: [SerializedColor, Record<ColorFormat, string>][] = [
     },
   ],
 ]
+
+beforeEach(() => {
+  settingsHexLowercaseSignal.value = true
+  settingsHexPrefixSignal.value = true
+})
 
 describe.each(testColors)('%o', (color, results) => {
   test.each(COLOR_FORMATS)("should properly format in '%s' format", (format) => {
@@ -57,5 +62,22 @@ describe('settings', () => {
     rerender(<ColorFormatter color={color} />)
 
     expect(screen.getByText('#6ABF40')).toBeDefined()
+  })
+
+  test('should use # prefix or not for hexadecimal colors', () => {
+    const color = colorFromSerializedColor({ h: 100, s: 50, l: 50, a: 1 })
+
+    editorFormatSignal.value = 'hex'
+    settingsHexPrefixSignal.value = true
+
+    const { rerender } = render(<ColorFormatter color={color} />)
+
+    expect(screen.getByText('#6abf40')).toBeDefined()
+
+    settingsHexPrefixSignal.value = false
+
+    rerender(<ColorFormatter color={color} />)
+
+    expect(screen.getByText('6abf40')).toBeDefined()
   })
 })

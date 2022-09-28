@@ -18,7 +18,7 @@ export function Checkbox({ checked, id, label, onChange }: CheckboxProps) {
         checked={checked}
         className={clsx(
           'relative -top-[2px] flex h-6 w-6 items-center justify-center rounded-md bg-zinc-700 group-hover:bg-zinc-600/50',
-          'focus-visible:(ring-2 ring-offset-zinc-900) outline-none ring-blue-600 ring-offset-2'
+          'focus-visible:(ring-2 ring-offset-zinc-800) outline-none ring-blue-600 ring-offset-2'
         )}
         id={id}
         onCheckedChange={handleChange}
@@ -27,7 +27,7 @@ export function Checkbox({ checked, id, label, onChange }: CheckboxProps) {
           <CheckIcon aria-hidden className="h-6 w-6 text-blue-500" />
         </CheckboxPrimitive.Indicator>
       </CheckboxPrimitive.Root>
-      <LabelPrimitive.Root htmlFor={id} className="ml-3 cursor-default select-none">
+      <LabelPrimitive.Root htmlFor={id} className="ml-3 cursor-default select-none" aria-hidden>
         {label}
       </LabelPrimitive.Root>
     </div>
@@ -37,6 +37,6 @@ export function Checkbox({ checked, id, label, onChange }: CheckboxProps) {
 export interface CheckboxProps {
   checked: boolean
   id: string
-  label: string
+  label: React.ReactNode
   onChange: (newChecked: boolean) => void
 }
