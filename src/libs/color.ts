@@ -76,13 +76,17 @@ export function getColorHslaComponents(color: Color): HslaColor {
   return color.toHsl()
 }
 
-export function getColorString(color: Color, format: ColorFormat = 'hsl'): string {
+export function getColorString(color: Color, format: ColorFormat = 'hsl', options?: ColorStringOptions): string {
+  const colorStringOptions: ColorStringOptions = { hexLowercase: true, ...options }
+
   switch (format) {
     case 'hsl': {
       return color.toHslString()
     }
     case 'hex': {
-      return color.toHex()
+      const hexStr = color.toHex()
+
+      return colorStringOptions.hexLowercase ? hexStr : hexStr.toUpperCase()
     }
     default: {
       throw new Error(`Unsupported color format '${format}'.`)
@@ -110,6 +114,10 @@ function isValidColorFormat(format: string): format is ColorFormat {
 export type Color = Colord
 
 export type RgbaComponent = keyof RgbaColor
+
+interface ColorStringOptions {
+  hexLowercase: boolean
+}
 
 // https://github.com/microsoft/TypeScript/issues/31940#issuecomment-841712377
 // eslint-disable-next-line @typescript-eslint/ban-types
