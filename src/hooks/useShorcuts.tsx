@@ -5,6 +5,7 @@ import { type Color, colorFromSerializedColor, colorFromStringInput, getColorStr
 import { getShortcutKeys } from '@/libs/shortcut'
 import { editorColorSignal, editorFormatSignal } from '@/signals/editor'
 import { addColorToHistory } from '@/signals/history'
+import { settingsDialogOpenedSignal } from '@/signals/settings'
 
 export function useShortcuts(setEditorColor: EditorColorSetter) {
   useHotkeys(getShortcutKeys(SHORTCUTS.CopyColor), handleCopyColor)
@@ -27,6 +28,10 @@ function handleCopyColor() {
 }
 
 async function handlePasteColor(setEditorColor: EditorColorSetter) {
+  if (settingsDialogOpenedSignal.value) {
+    return
+  }
+
   let clipboardText: string | undefined
 
   try {
