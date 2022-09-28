@@ -11,9 +11,9 @@ export async function pickColor() {
 
   const eyeDropper = new EyeDropper()
 
-  const color = await eyeDropper.open()
+  const { sRGBHex } = await eyeDropper.open()
 
-  return colorFromString(color.sRGBHex)
+  return colorFromString(sRGBHex)
 }
 
 declare class EyeDropper {

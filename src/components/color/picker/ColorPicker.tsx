@@ -2,14 +2,20 @@ import * as VisuallyHiddenPrimitive from '@radix-ui/react-visually-hidden'
 import clsx from 'clsx'
 
 import { Checkerboard } from '@/components/color/slider/Checkerboard'
+import { writeColorToClipboard } from '@/libs/clipboard'
 import { type Color, getColorString } from '@/libs/color'
 import { pickColor } from '@/libs/picker'
+import { settingsCopyAfterPickSignal } from '@/signals/settings'
 
 export function ColorPicker({ color, onPick }: ColorPickerProps) {
   async function handleClick() {
     const color = await pickColor()
 
     onPick(color)
+
+    if (settingsCopyAfterPickSignal.value) {
+      writeColorToClipboard(color)
+    }
   }
 
   return (
