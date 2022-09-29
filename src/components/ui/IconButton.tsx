@@ -4,20 +4,22 @@ import clsx from 'clsx'
 import { forwardRef } from 'react'
 
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(function IconButton(
-  { icon, title, ...props },
+  { className, icon, title, ...props },
   ref
 ) {
   const IconComponent = icon
 
   return (
     <button
-      ref={ref}
-      type="button"
-      {...props}
       className={clsx(
         'flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-zinc-700/75 hover:bg-zinc-700',
-        'focus-visible:(ring-2 outline-none) ring-blue-600 ring-offset-2 ring-offset-zinc-900'
+        'focus-visible:(ring-2 outline-none) ring-blue-600 ring-offset-2 ring-offset-zinc-900',
+        className
       )}
+      ref={ref}
+      title={title}
+      type="button"
+      {...props}
     >
       {title && title.length > 0 ? <VisuallyHiddenPrimitive.Root>{title}</VisuallyHiddenPrimitive.Root> : null}
       <IconComponent aria-hidden />
