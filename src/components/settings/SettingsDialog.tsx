@@ -6,6 +6,7 @@ import { Dialog } from '@/components/ui/Dialog'
 import { IconButton } from '@/components/ui/IconButton'
 import {
   settingsCopyAfterPickSignal,
+  settingsCopySoundSignal,
   settingsDialogOpenedSignal,
   settingsHexLowercaseSignal,
   settingsHexPrefixSignal,
@@ -27,6 +28,11 @@ export function SettingsDialog() {
         id="settings-copy-after-pick"
         label="Copy color to the clipboard after picking"
         signal={settingsCopyAfterPickSignal}
+      />
+      <SignalCheckbox
+        id="settings-copy-sound"
+        label="Play sound after copying a color to the clipboard"
+        signal={settingsCopySoundSignal}
       />
       <SignalCheckbox
         id="settings-hex-prefix"

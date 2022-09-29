@@ -44,7 +44,7 @@ export default defineConfig({
     }),
     react(),
     VitePWA({
-      includeAssets: ['images/favicon.ico', 'images/apple-touch-icon.png', 'images/masked-icon.svg'],
+      includeAssets: ['images/*.{ico,png,svg}', 'sounds/*.webm'],
       manifest: {
         description: '// TODO',
         icons: [
