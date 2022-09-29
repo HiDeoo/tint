@@ -9,7 +9,7 @@ export function ColorFormatter({ color }: ColorFormatterProps) {
   return (
     <div className="flex min-w-0 text-2xl font-medium">
       <VisuallyHiddenPrimitive.Root>Current color</VisuallyHiddenPrimitive.Root>
-      <div className="truncate">{colorStr}</div>
+      <div className="select-all truncate">{colorStr}</div>
     </div>
   )
 }
