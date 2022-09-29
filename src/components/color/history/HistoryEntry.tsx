@@ -14,8 +14,8 @@ export function HistoryEntry({ color, onSelect }: HistoryEntryProps) {
   return (
     <button
       className={clsx(
-        'aspect-square w-10 rounded-md outline-none ring-blue-600 ring-offset-2 ring-offset-zinc-900',
-        'focus-visible:(ring-2) hover:(ring-2)'
+        'aspect-square w-10 rounded-md border border-zinc-800',
+        'focus-visible:(ring-2) hover:(ring-2) outline-none ring-blue-600 ring-offset-2 ring-offset-zinc-900'
       )}
       onClick={handleClick}
       style={{ backgroundColor: getColorString(color) }}

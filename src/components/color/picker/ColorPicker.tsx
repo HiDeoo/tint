@@ -23,9 +23,8 @@ export function ColorPicker({ color, onPick }: ColorPickerProps) {
   return (
     <button
       className={clsx(
-        'relative mb-2 h-32 w-full overflow-hidden rounded-md ring-blue-600 ring-offset-2 ring-offset-zinc-900',
-        'hover:(ring-2.5)',
-        'focus-visible:(ring-2.5 outline-none)'
+        'hover:(ring-2.5) relative mb-2 h-32 w-full overflow-hidden rounded-md border-2 border-zinc-800',
+        'focus-visible:(ring-2.5) outline-none ring-blue-600 ring-offset-2 ring-offset-zinc-900'
       )}
       onClick={handleClick}
       style={{ backgroundColor: getColorString(color) }}
