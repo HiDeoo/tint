@@ -25,7 +25,14 @@ export function Select<TItem extends string>({
         </SelectPrimitive.Icon>
       </SelectPrimitive.Trigger>
       <SelectPrimitive.Portal>
-        <SelectPrimitive.Content className="overflow-hidden rounded-md bg-zinc-700">
+        <SelectPrimitive.Content
+          className={clsx(
+            'overflow-hidden rounded-md bg-zinc-700',
+            'motion-safe:ds-open:(animated animated-zoom-in)',
+            'motion-safe:ds-closed:(animated animated-zoom-out)'
+          )}
+          style={{ '--une-animated-duration': '150ms' }}
+        >
           <SelectPrimitive.ScrollUpButton className="flex h-8 items-center justify-center bg-zinc-700">
             <ChevronUpIcon />
           </SelectPrimitive.ScrollUpButton>
