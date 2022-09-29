@@ -18,7 +18,8 @@ export function ColorToolbar({ color }: ColorToolbarProps) {
       <ColorFormatter color={color} />
       <IconButton
         className={clsx(
-          '[&>svg]:(w-6 h-6) relative top-px !w-auto !bg-transparent !ring-offset-0 hover:text-blue-600',
+          '[&>svg]:(w-6 h-6) relative top-px !w-auto !bg-transparent !ring-offset-0',
+          'hover:text-blue-600 active:text-blue-500',
           'focus-visible:(!ring-0 text-blue-600)'
         )}
         icon={CopyIcon}

@@ -17,7 +17,8 @@ export function Checkbox({ checked, id, label, onChange }: CheckboxProps) {
       <CheckboxPrimitive.Root
         checked={checked}
         className={clsx(
-          'relative -top-[2px] flex h-6 w-6 items-center justify-center rounded-md bg-zinc-700 group-hover:bg-zinc-600/50',
+          'relative -top-[2px] flex h-6 w-6 items-center justify-center rounded-md bg-zinc-700',
+          'group-hover:bg-zinc-600/75 group-active:!bg-zinc-600',
           'focus-visible:(ring-2 ring-offset-zinc-800) outline-none ring-blue-600 ring-offset-2'
         )}
         id={id}

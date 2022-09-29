@@ -30,7 +30,7 @@ export function Dialog({ children, onToggle, opened, title, trigger }: DialogPro
             {children}
             <DialogPrimitive.Close
               className={clsx(
-                'absolute top-3 right-3 rounded-full p-1 hover:bg-zinc-700',
+                'absolute top-3 right-3 rounded-full p-1 hover:bg-zinc-700 active:bg-zinc-600',
                 'focus-visible:(ring-2 ring-offset-zinc-900) outline-none ring-blue-600 ring-offset-2'
               )}
             >
