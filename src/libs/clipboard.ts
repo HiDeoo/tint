@@ -1,6 +1,7 @@
 import { colorFromStringInput, getColorString, type Color } from '@/libs/color'
 import { editorFormatSignal } from '@/signals/editor'
 import { addColorToHistory } from '@/signals/history'
+import { addToast } from '@/signals/toasts'
 
 export function writeColorToClipboard(color: Color) {
   const formattedColor = getColorString(color, editorFormatSignal.value, true)
@@ -9,8 +10,10 @@ export function writeColorToClipboard(color: Color) {
 
   try {
     navigator.clipboard.writeText(formattedColor)
+
+    addToast({ intent: 'success', message: 'COPIED' })
   } catch {
-    throw new Error('// TODO(HiDeoo)')
+    addToast({ intent: 'error', message: 'Unable to copy color to the clipboard.' })
   }
 }
 
@@ -20,7 +23,7 @@ export async function readColorFromClipBoard() {
   try {
     clipboardText = await navigator.clipboard.readText()
   } catch {
-    throw new Error('// TODO(HiDeoo)')
+    return addToast({ intent: 'error', message: 'Unable to read color from clipboard.' })
   }
 
   try {
@@ -28,6 +31,6 @@ export async function readColorFromClipBoard() {
 
     return color
   } catch {
-    throw new Error('// TODO(HiDeoo)')
+    return addToast({ intent: 'error', message: 'Unable to paste unsupported color format.' })
   }
 }

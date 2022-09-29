@@ -20,11 +20,7 @@ export function useShortcuts(setEditorColor: EditorColorSetter) {
 function handleCopyColor() {
   const color = colorFromSerializedColor(editorColorSignal.value)
 
-  try {
-    writeColorToClipboard(color)
-  } catch {
-    // TODO(HiDeoo)
-  }
+  writeColorToClipboard(color)
 }
 
 async function handlePasteColor(setEditorColor: EditorColorSetter) {
@@ -32,12 +28,10 @@ async function handlePasteColor(setEditorColor: EditorColorSetter) {
     return
   }
 
-  try {
-    const color = await readColorFromClipBoard()
+  const color = await readColorFromClipBoard()
 
+  if (color) {
     setEditorColor(color)
-  } catch {
-    // TODO(HiDeoo)
   }
 }
 

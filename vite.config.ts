@@ -2,6 +2,7 @@
 
 import react from '@vitejs/plugin-react'
 import { presetUno, transformerVariantGroup } from 'unocss'
+import { presetExtra } from 'unocss-preset-extra'
 import Unocss from 'unocss/vite'
 import { defineConfig } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
@@ -11,7 +12,7 @@ export default defineConfig({
   plugins: [
     tsconfigPaths(),
     Unocss({
-      presets: [presetUno()],
+      presets: [presetUno(), presetExtra()],
       theme: {
         breakpoints: {
           xss: '480px',
@@ -21,7 +22,7 @@ export default defineConfig({
       transformers: [transformerVariantGroup()],
       variants: [
         (matcher) => {
-          const prefixes = ['ds-active:', 'ds-inactive:', 'd-highlighted:']
+          const prefixes = ['ds-active:', 'ds-inactive:', 'ds-open:', 'ds-closed:', 'd-highlighted:']
           const prefix = prefixes.find((prefix) => matcher.startsWith(prefix))
 
           if (!prefix) {

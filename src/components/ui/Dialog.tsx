@@ -13,7 +13,7 @@ export function Dialog({ children, onToggle, opened, title, trigger }: DialogPro
             'xs:items-center fixed inset-0 z-20 grid items-start justify-items-center bg-zinc-900/80 p-8'
           )}
         >
-          <DialogPrimitive.Content className="w-100 max-w-128 relative w-full overflow-hidden rounded-md bg-zinc-800 p-4 shadow-md shadow-zinc-800/50">
+          <DialogPrimitive.Content className="w-100 max-w-128 relative w-full overflow-hidden rounded-md bg-zinc-800 p-4 shadow shadow-black/50">
             <DialogPrimitive.Title className="-mx-4 -mt-4 mb-4 bg-black/50 px-4 py-3 text-lg font-semibold">
               {title}
             </DialogPrimitive.Title>
