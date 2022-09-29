@@ -1,4 +1,4 @@
-import { colorFromString } from '@/libs/color'
+import { type Color, colorFromString } from '@/libs/color'
 
 export function isColorPickerAvailable() {
   return 'EyeDropper' in globalThis
@@ -9,11 +9,19 @@ export async function pickColor() {
     throw new Error('Color picker is not supported in this browser.')
   }
 
-  const eyeDropper = new EyeDropper()
+  let color: Color | undefined
 
-  const { sRGBHex } = await eyeDropper.open()
+  try {
+    const eyeDropper = new EyeDropper()
 
-  return colorFromString(sRGBHex)
+    const { sRGBHex } = await eyeDropper.open()
+
+    color = colorFromString(sRGBHex)
+  } catch {
+    // We can safely ignore this error as it is thrown when the user cancels the pick operation.
+  }
+
+  return color
 }
 
 declare class EyeDropper {

@@ -11,10 +11,12 @@ export function ColorPicker({ color, onPick }: ColorPickerProps) {
   async function handleClick() {
     const color = await pickColor()
 
-    onPick(color)
+    if (color) {
+      onPick(color)
 
-    if (settingsCopyAfterPickSignal.value) {
-      writeColorToClipboard(color)
+      if (settingsCopyAfterPickSignal.value) {
+        writeColorToClipboard(color)
+      }
     }
   }
 
