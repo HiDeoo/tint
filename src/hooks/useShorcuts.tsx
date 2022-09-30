@@ -18,6 +18,10 @@ export function useShortcuts(setEditorColor: EditorColorSetter) {
 }
 
 function handleCopyColor() {
+  if (settingsDialogOpenedSignal.value) {
+    return
+  }
+
   const color = colorFromSerializedColor(editorColorSignal.value)
 
   writeColorToClipboard(color)

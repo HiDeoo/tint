@@ -2,7 +2,7 @@ import { signal } from '@preact/signals-react'
 
 import { signalWithStorage } from '@/signals'
 
-export const settingsDialogOpenedSignal = signal(true)
+export const settingsDialogOpenedSignal = signal(false)
 
 export const settingsCopyAfterPickSignal = signalWithStorage('settingsCopyAfterPick', true)
 export const settingsCopySoundSignal = signalWithStorage('settingsCopySound', true)
