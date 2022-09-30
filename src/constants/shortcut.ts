@@ -1,6 +1,6 @@
 export const SHORTCUTS = {
-  CopyColor: { keys: 'ctrl+c', label: '// TODO' },
-  PasteColor: { keys: 'ctrl+v', label: '// TODO' },
+  CopyColor: { keys: 'ctrl+c', label: 'Copy Color' },
+  PasteColor: { keys: 'ctrl+v', label: 'Paste Color' },
 }
 
 export interface Shortcut {
