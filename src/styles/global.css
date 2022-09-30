@@ -6,6 +6,14 @@
   background: hsl(221 83% 53%);
 }
 
+.pwa-update *::selection {
+  background: hsl(32 95% 44%);
+}
+
+.pwa-update *::-moz-selection {
+  background: hsl(32 95% 44%);
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .toast[data-swipe='move'] {
     transform: translateX(var(--radix-toast-swipe-move-x)) !important;

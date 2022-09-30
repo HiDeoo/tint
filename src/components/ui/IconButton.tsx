@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { forwardRef } from 'react'
 
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(function IconButton(
-  { className, icon, title, ...props },
+  { className, icon, iconClassName, title, ...props },
   ref
 ) {
   const IconComponent = icon
@@ -23,11 +23,12 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(functio
       {...props}
     >
       {title && title.length > 0 ? <VisuallyHiddenPrimitive.Root>{title}</VisuallyHiddenPrimitive.Root> : null}
-      <IconComponent aria-hidden />
+      <IconComponent aria-hidden className={iconClassName} />
     </button>
   )
 })
 
 interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   icon: React.ComponentType<IconProps>
+  iconClassName?: string
 }
