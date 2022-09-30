@@ -8,7 +8,7 @@ export function Nis({ children, icon, title }: NisProps) {
   return (
     <div className="flex gap-5 rounded-md bg-zinc-800 p-5 text-lg">
       <div className="flex items-center justify-center">
-        <IconComponent aria-hidden className="h-20 w-20" />
+        <IconComponent aria-hidden className="h-20 w-20 text-zinc-200" />
       </div>
       <Separator orientation="vertical" decorative />
       <div>
