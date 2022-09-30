@@ -3,6 +3,7 @@ import clsx from 'clsx'
 
 import { ColorFormatPicker } from '@/components/color/toolbar/ColorFormatPicker'
 import { ColorFormatter } from '@/components/color/toolbar/ColorFormatter'
+import { PwaPrompt } from '@/components/pwa/PwaPrompt'
 import { SettingsDialog } from '@/components/settings/SettingsDialog'
 import { IconButton } from '@/components/ui/IconButton'
 import { writeColorToClipboard } from '@/libs/clipboard'
@@ -29,6 +30,7 @@ export function ColorToolbar({ color }: ColorToolbarProps) {
       <div className="grow" />
       <ColorFormatPicker />
       <SettingsDialog />
+      <PwaPrompt />
     </section>
   )
 }

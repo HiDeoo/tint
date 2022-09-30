@@ -16,3 +16,17 @@ interface Navigator {
     }[]
   }
 }
+
+// https://developer.mozilla.org/en-US/docs/Web/API/BeforeInstallPromptEvent
+interface BeforeInstallPromptEvent extends Event {
+  readonly platforms: string[]
+  prompt: () => Promise<void>
+  readonly userChoice: Promise<{
+    outcome: 'accepted' | 'dismissed'
+    platform: string
+  }>
+}
+
+interface WindowEventMap {
+  beforeinstallprompt: BeforeInstallPromptEvent
+}
