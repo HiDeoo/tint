@@ -13,6 +13,7 @@ const testColors: [SerializedColor, Record<ColorFormat, string>][] = [
     {
       hex: '#000000',
       hsl: 'hsl(0 0% 0%)',
+      rgb: 'rgb(0 0 0)',
     },
   ],
   [
@@ -20,6 +21,7 @@ const testColors: [SerializedColor, Record<ColorFormat, string>][] = [
     {
       hex: '#ffffff',
       hsl: 'hsl(0 0% 100%)',
+      rgb: 'rgb(255 255 255)',
     },
   ],
   [
@@ -27,6 +29,7 @@ const testColors: [SerializedColor, Record<ColorFormat, string>][] = [
     {
       hex: '#afcfcf80',
       hsl: 'hsl(180 25% 75% / 0.5)',
+      rgb: 'rgb(175 207 207 / 0.5)',
     },
   ],
 ]

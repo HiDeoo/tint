@@ -1,8 +1,8 @@
-export const COLOR_FORMATS = ['hex', 'hsl'] as const
+export const COLOR_FORMATS = ['hex', 'hsl', 'rgb'] as const
 
 export const GROUPED_COLOR_FORMATS: Record<string, ColorFormat[]> = {
   Haha: ['hex'],
-  Amazing: ['hsl'],
+  Amazing: ['hsl', 'rgb'],
 }
 
 export const RGBA_COMPONENT_NAMES = {

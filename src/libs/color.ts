@@ -101,6 +101,14 @@ export function getColorString(color: Color, format: ColorFormat = 'hsl', useSet
 
       return hexStr
     }
+    case 'rgb': {
+      return color
+        .toRgbString()
+        .replace(
+          /rgba?\((\d+), (\d+), (\d+)(?:, (\d+))?/,
+          (_match, red, blue, green, alpha) => `rgb(${red} ${blue} ${green}${alpha ? ` / ${alpha}` : ''}`
+        )
+    }
     default: {
       throw new Error(`Unsupported color format '${format}'.`)
     }
