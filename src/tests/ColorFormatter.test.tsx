@@ -12,21 +12,21 @@ const testColors: [SerializedColor, Record<ColorFormat, string>][] = [
     { h: 0, s: 0, l: 0, a: 1 },
     {
       hex: '#000000',
-      hsl: 'hsl(0, 0%, 0%)',
+      hsl: 'hsl(0 0% 0%)',
     },
   ],
   [
     { h: 0, s: 0, l: 100, a: 1 },
     {
       hex: '#ffffff',
-      hsl: 'hsl(0, 0%, 100%)',
+      hsl: 'hsl(0 0% 100%)',
     },
   ],
   [
     { h: 180, s: 25, l: 75, a: 0.5 },
     {
       hex: '#afcfcf80',
-      hsl: 'hsla(180, 25%, 75%, 0.5)',
+      hsl: 'hsl(180 25% 75% / 0.5)',
     },
   ],
 ]

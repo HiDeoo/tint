@@ -80,7 +80,13 @@ export function getColorHslaComponents(color: Color): HslaColor {
 export function getColorString(color: Color, format: ColorFormat = 'hsl', useSettings = false): string {
   switch (format) {
     case 'hsl': {
-      return color.toHslString()
+      return color
+        .toHslString()
+        .replace(
+          /hsla?\((\d+), (\d+%), (\d+%)(?:, (\d+))?/,
+          (_match, hue, saturation, lightning, alpha) =>
+            `hsl(${hue} ${saturation} ${lightning}${alpha ? ` / ${alpha}` : ''}`
+        )
     }
     case 'hex': {
       let hexStr = color.toHex()
