@@ -1,11 +1,11 @@
 import { GearIcon } from '@radix-ui/react-icons'
 import * as VisuallyHiddenPrimitive from '@radix-ui/react-visually-hidden'
 
-import { SettingsSeparator } from '@/components/settings/SettingsSeparator'
 import { SettingsShortcuts } from '@/components/settings/SettingsShortcuts'
 import { SignalCheckbox } from '@/components/settings/SignalCheckbox'
 import { Dialog } from '@/components/ui/Dialog'
 import { IconButton } from '@/components/ui/IconButton'
+import { Separator } from '@/components/ui/Separator'
 import {
   settingsCopyAfterPickSignal,
   settingsCopySoundSignal,
@@ -52,7 +52,7 @@ export function SettingsDialog() {
         signal={settingsHexLowercaseSignal}
       />
 
-      <SettingsSeparator orientation="horizontal" />
+      <Separator orientation="horizontal" />
       <SettingsShortcuts />
     </Dialog>
   )
