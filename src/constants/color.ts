@@ -1,8 +1,17 @@
-export const COLOR_FORMATS = ['hex', 'hsl', 'rgb'] as const
+export const COLOR_FORMATS = {
+  CssHex: { group: 'CSS', label: 'Hex' },
+  CssHsl: { group: 'CSS', label: 'HSL' },
+  CssRgb: { group: 'CSS', label: 'RGB' },
+}
 
-export const GROUPED_COLOR_FORMATS: Record<string, ColorFormat[]> = {
-  Haha: ['hex'],
-  Amazing: ['hsl', 'rgb'],
+export const GROUPED_COLOR_FORMAT_NAMES: Record<string, ColorFormatName[]> = {}
+
+for (const [colorFormatName, colorFormat] of Object.entries(COLOR_FORMATS)) {
+  if (!(colorFormat.group in GROUPED_COLOR_FORMAT_NAMES)) {
+    GROUPED_COLOR_FORMAT_NAMES[colorFormat.group] = []
+  }
+
+  GROUPED_COLOR_FORMAT_NAMES[colorFormat.group]?.push(colorFormatName as ColorFormatName)
 }
 
 export const RGBA_COMPONENT_NAMES = {
@@ -12,4 +21,4 @@ export const RGBA_COMPONENT_NAMES = {
   a: 'Alpha',
 }
 
-export type ColorFormat = typeof COLOR_FORMATS[number]
+export type ColorFormatName = keyof typeof COLOR_FORMATS

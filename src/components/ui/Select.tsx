@@ -5,10 +5,12 @@ import { Fragment } from 'react'
 
 export function Select<TItem extends string>({
   items,
+  itemFormatter,
   onChange,
   selectedItem,
   triggerLabel,
   triggerPlaceholder,
+  valueFormatter,
 }: SelectProps<TItem>) {
   return (
     <SelectPrimitive.Root onValueChange={onChange} value={selectedItem}>
@@ -19,7 +21,11 @@ export function Select<TItem extends string>({
           'focus-visible:(ring-2 outline-none) ring-blue-600 ring-offset-2 ring-offset-zinc-900'
         )}
       >
-        <SelectPrimitive.Value placeholder={triggerPlaceholder} />
+        <SelectPrimitive.Value asChild>
+          <span className="pointer-events-none">
+            {selectedItem ? (valueFormatter ? valueFormatter(selectedItem) : selectedItem) : triggerPlaceholder}
+          </span>
+        </SelectPrimitive.Value>
         <SelectPrimitive.Icon>
           <ChevronDownIcon />
         </SelectPrimitive.Icon>
@@ -38,10 +44,10 @@ export function Select<TItem extends string>({
           </SelectPrimitive.ScrollUpButton>
           <SelectPrimitive.Viewport className="p-2">
             {Array.isArray(items)
-              ? items.map((item) => <SelectItem key={item} item={item} />)
+              ? items.map((item) => <SelectItem key={item} item={item} itemFormatter={itemFormatter} />)
               : Object.entries(items).map(([groupName, groupItems], index) => (
                   <Fragment key={groupName}>
-                    <SelectGroup label={groupName} items={groupItems} />
+                    <SelectGroup label={groupName} items={groupItems} itemFormatter={itemFormatter} />
                     {index < Object.keys(items).length - 1 ? (
                       <SelectPrimitive.Separator className="mt-2.5 mb-0.5 h-px bg-zinc-500/75" />
                     ) : null}
@@ -57,24 +63,24 @@ export function Select<TItem extends string>({
   )
 }
 
-function SelectGroup<TItem extends string>({ items, label }: SelectGroupProps<TItem>) {
+function SelectGroup<TItem extends string>({ items, itemFormatter, label }: SelectGroupProps<TItem>) {
   return (
     <SelectPrimitive.Group>
       <SelectPrimitive.Label className="select-none py-1.5 px-7 text-zinc-400">{label}</SelectPrimitive.Label>
       {items.map((item) => (
-        <SelectItem key={item} item={item} />
+        <SelectItem key={item} item={item} itemFormatter={itemFormatter} />
       ))}
     </SelectPrimitive.Group>
   )
 }
 
-function SelectItem<TItem extends string>({ item }: SelectItemProps<TItem>) {
+function SelectItem<TItem extends string>({ item, itemFormatter }: SelectItemProps<TItem>) {
   return (
     <SelectPrimitive.Item
-      value={item}
       className="d-highlighted:bg-blue-600 relative select-none rounded-md py-1.5 px-7 outline-none"
+      value={item}
     >
-      <SelectPrimitive.ItemText>{item}</SelectPrimitive.ItemText>
+      <SelectPrimitive.ItemText>{itemFormatter ? itemFormatter(item) : item}</SelectPrimitive.ItemText>
       <SelectPrimitive.ItemIndicator className="absolute left-0.5 top-0 bottom-0 flex w-6 items-center justify-center">
         <CheckIcon />
       </SelectPrimitive.ItemIndicator>
@@ -83,18 +89,22 @@ function SelectItem<TItem extends string>({ item }: SelectItemProps<TItem>) {
 }
 
 interface SelectProps<TItem extends string> {
+  itemFormatter?: (item: TItem) => string
   items: readonly TItem[] | Record<string, readonly TItem[]>
   onChange: (newItem: TItem) => void
   selectedItem: TItem
   triggerLabel: string
   triggerPlaceholder: string
+  valueFormatter?: (item: TItem) => React.ReactNode
 }
 
 interface SelectGroupProps<TItem extends string> {
+  itemFormatter: SelectProps<TItem>['itemFormatter'] | undefined
   items: readonly TItem[]
   label: string
 }
 
 interface SelectItemProps<TItem extends string> {
   item: TItem
+  itemFormatter: SelectProps<TItem>['itemFormatter'] | undefined
 }

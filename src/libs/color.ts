@@ -1,6 +1,6 @@
 import { colord, type HslaColor, type Colord, type RgbaColor, getFormat } from 'colord'
 
-import { COLOR_FORMATS, RGBA_COMPONENT_NAMES, type ColorFormat } from '@/constants/color'
+import { type ColorFormatName, COLOR_FORMATS, RGBA_COMPONENT_NAMES } from '@/constants/color'
 import { settingsHexLowercaseSignal, settingsHexPrefixSignal } from '@/signals/settings'
 
 export function colorFromSerializedColor(serializedColor: SerializedColor): Color {
@@ -19,7 +19,7 @@ export function colorFromStringInput(colorStr: string | undefined): Color {
 
   const format: string | undefined = getFormat(colorStr)
 
-  if (!format || !isValidColorFormat(format)) {
+  if (!format || !isValidColorFormatName(format)) {
     throw new Error('Invalid color format.')
   }
 
@@ -77,9 +77,9 @@ export function getColorHslaComponents(color: Color): HslaColor {
   return color.toHsl()
 }
 
-export function getColorString(color: Color, format: ColorFormat = 'hsl', useSettings = false): string {
-  switch (format) {
-    case 'hsl': {
+export function getColorString(color: Color, formatName: ColorFormatName = 'CssHsl', useSettings = false): string {
+  switch (formatName) {
+    case 'CssHsl': {
       return color
         .toHslString()
         .replace(
@@ -88,7 +88,7 @@ export function getColorString(color: Color, format: ColorFormat = 'hsl', useSet
             `hsl(${hue} ${saturation} ${lightning}${alpha ? ` / ${alpha}` : ''}`
         )
     }
-    case 'hex': {
+    case 'CssHex': {
       let hexStr = color.toHex()
 
       if (useSettings && !settingsHexLowercaseSignal.value) {
@@ -101,7 +101,7 @@ export function getColorString(color: Color, format: ColorFormat = 'hsl', useSet
 
       return hexStr
     }
-    case 'rgb': {
+    case 'CssRgb': {
       return color
         .toRgbString()
         .replace(
@@ -110,7 +110,7 @@ export function getColorString(color: Color, format: ColorFormat = 'hsl', useSet
         )
     }
     default: {
-      throw new Error(`Unsupported color format '${format}'.`)
+      throw new Error(`Unsupported color format '${formatName}'.`)
     }
   }
 }
@@ -128,8 +128,8 @@ export function isEqualSerializedColor(lSerializedColor: SerializedColor, rSeria
   )
 }
 
-function isValidColorFormat(format: string): format is ColorFormat {
-  return COLOR_FORMATS.includes(format as ColorFormat)
+function isValidColorFormatName(format: string): format is ColorFormatName {
+  return format in COLOR_FORMATS
 }
 
 export type Color = Colord

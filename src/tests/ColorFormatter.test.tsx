@@ -2,34 +2,34 @@ import { render, screen } from '@testing-library/react'
 import { beforeEach, describe, expect, test } from 'vitest'
 
 import { ColorFormatter } from '@/components/color/toolbar/ColorFormatter'
-import { COLOR_FORMATS, type ColorFormat } from '@/constants/color'
+import { type ColorFormatName, COLOR_FORMATS } from '@/constants/color'
 import { colorFromSerializedColor, type SerializedColor } from '@/libs/color'
 import { editorFormatSignal } from '@/signals/editor'
 import { settingsHexLowercaseSignal, settingsHexPrefixSignal } from '@/signals/settings'
 
-const testColors: [SerializedColor, Record<ColorFormat, string>][] = [
+const testColors: [SerializedColor, Record<ColorFormatName, string>][] = [
   [
     { h: 0, s: 0, l: 0, a: 1 },
     {
-      hex: '#000000',
-      hsl: 'hsl(0 0% 0%)',
-      rgb: 'rgb(0 0 0)',
+      CssHex: '#000000',
+      CssHsl: 'hsl(0 0% 0%)',
+      CssRgb: 'rgb(0 0 0)',
     },
   ],
   [
     { h: 0, s: 0, l: 100, a: 1 },
     {
-      hex: '#ffffff',
-      hsl: 'hsl(0 0% 100%)',
-      rgb: 'rgb(255 255 255)',
+      CssHex: '#ffffff',
+      CssHsl: 'hsl(0 0% 100%)',
+      CssRgb: 'rgb(255 255 255)',
     },
   ],
   [
     { h: 180, s: 25, l: 75, a: 0.5 },
     {
-      hex: '#afcfcf80',
-      hsl: 'hsl(180 25% 75% / 0.5)',
-      rgb: 'rgb(175 207 207 / 0.5)',
+      CssHex: '#afcfcf80',
+      CssHsl: 'hsl(180 25% 75% / 0.5)',
+      CssRgb: 'rgb(175 207 207 / 0.5)',
     },
   ],
 ]
@@ -40,7 +40,7 @@ beforeEach(() => {
 })
 
 describe.each(testColors)('%o', (color, results) => {
-  test.each(COLOR_FORMATS)("should properly format in '%s' format", (format) => {
+  test.each(Object.keys(COLOR_FORMATS) as ColorFormatName[])("should properly format in '%s' format", (format) => {
     editorFormatSignal.value = format
 
     render(<ColorFormatter color={colorFromSerializedColor(color)} />)
@@ -53,7 +53,7 @@ describe('settings', () => {
   test('should use lowercase or uppercase for hexadecimal colors', () => {
     const color = colorFromSerializedColor({ h: 100, s: 50, l: 50, a: 1 })
 
-    editorFormatSignal.value = 'hex'
+    editorFormatSignal.value = 'CssHex'
     settingsHexLowercaseSignal.value = true
 
     const { rerender } = render(<ColorFormatter color={color} />)
@@ -70,7 +70,7 @@ describe('settings', () => {
   test('should use # prefix or not for hexadecimal colors', () => {
     const color = colorFromSerializedColor({ h: 100, s: 50, l: 50, a: 1 })
 
-    editorFormatSignal.value = 'hex'
+    editorFormatSignal.value = 'CssHex'
     settingsHexPrefixSignal.value = true
 
     const { rerender } = render(<ColorFormatter color={color} />)
