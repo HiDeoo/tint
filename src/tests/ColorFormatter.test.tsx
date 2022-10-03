@@ -24,6 +24,7 @@ const testColors: [SerializedColor, Record<ColorFormatName, string>][] = [
       SwiftUiRgb: 'Color(red: 0, green: 0, blue: 0)',
       AndroidHex: 'Color.valueOf(0xff000000)',
       AndroidRgb: 'Color.valueOf(0f, 0f, 0f)',
+      AndroidXmlHex: '<color name="color_name">#ff000000</color>',
     },
   ],
   [
@@ -42,6 +43,7 @@ const testColors: [SerializedColor, Record<ColorFormatName, string>][] = [
       SwiftUiRgb: 'Color(red: 1, green: 1, blue: 1)',
       AndroidHex: 'Color.valueOf(0xffffffff)',
       AndroidRgb: 'Color.valueOf(1f, 1f, 1f)',
+      AndroidXmlHex: '<color name="color_name">#ffffffff</color>',
     },
   ],
   [
@@ -60,6 +62,7 @@ const testColors: [SerializedColor, Record<ColorFormatName, string>][] = [
       SwiftUiRgb: 'Color(red: 0.69, green: 0.81, blue: 0.81, opacity: 0.5)',
       AndroidHex: 'Color.valueOf(0x80afcfcf)',
       AndroidRgb: 'Color.valueOf(0.69f, 0.81f, 0.81f, 0.5f)',
+      AndroidXmlHex: '<color name="color_name">#80afcfcf</color>',
     },
   ],
   [
@@ -78,6 +81,7 @@ const testColors: [SerializedColor, Record<ColorFormatName, string>][] = [
       SwiftUiRgb: 'Color(red: 0.35, green: 0.84, blue: 0.27, opacity: 0.33)',
       AndroidHex: 'Color.valueOf(0x545ad544)',
       AndroidRgb: 'Color.valueOf(0.35f, 0.84f, 0.27f, 0.33f)',
+      AndroidXmlHex: '<color name="color_name">#545ad544</color>',
     },
   ],
 ]
@@ -126,6 +130,19 @@ describe('settings', () => {
     rerender(<ColorFormatter color={color} />)
 
     expect(screen.getByText('Color.valueOf(0xFF6ABF40)')).toBeDefined()
+
+    editorFormatSignal.value = 'AndroidXmlHex'
+    settingsHexLowercaseSignal.value = true
+
+    rerender(<ColorFormatter color={color} />)
+
+    expect(screen.getByText('<color name="color_name">#ff6abf40</color>')).toBeDefined()
+
+    settingsHexLowercaseSignal.value = false
+
+    rerender(<ColorFormatter color={color} />)
+
+    expect(screen.getByText('<color name="color_name">#FF6ABF40</color>')).toBeDefined()
   })
 
   test('should use # prefix or not for CSS hexadecimal colors', () => {

@@ -157,7 +157,8 @@ export function getColorString(color: Color, formatName: ColorFormatName = 'CssH
 
       return `${prefix}(${r}f, ${g}f, ${b}f${rgbaColor.a < 1 ? `, ${rgbaColor.a}f` : ''})`
     }
-    case 'AndroidHex': {
+    case 'AndroidHex':
+    case 'AndroidXmlHex': {
       const rgbaColor = color.toRgb()
       let hexStr = color.toHex()
 
@@ -176,7 +177,7 @@ export function getColorString(color: Color, formatName: ColorFormatName = 'CssH
         hexStr = hexStr.toUpperCase()
       }
 
-      return `Color.valueOf(0x${hexStr})`
+      return formatName === 'AndroidHex' ? `Color.valueOf(0x${hexStr})` : `<color name="color_name">#${hexStr}</color>`
     }
     case 'CgColorCmyk': {
       const cmykColor = color.toCmyk()

@@ -12,6 +12,7 @@ export const COLOR_FORMATS = {
   SwiftUiRgb: { group: 'Swift UI', label: 'RGB' },
   AndroidHex: { group: 'Android', label: 'Hex' },
   AndroidRgb: { group: 'Android', label: 'RGB' },
+  AndroidXmlHex: { group: 'Android', label: 'XML Hex' },
 }
 
 export const GROUPED_COLOR_FORMAT_NAMES: Record<string, ColorFormatName[]> = {}
