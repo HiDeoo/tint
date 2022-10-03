@@ -147,6 +147,16 @@ export function getColorString(color: Color, formatName: ColorFormatName = 'CssH
 
       return `${prefix}(red: ${r}, green: ${g}, blue: ${b}, alpha: ${rgbaColor.a})`
     }
+    case 'AndroidRgb': {
+      const rgbaColor = color.toRgb()
+
+      const prefix = 'Color.valueOf'
+      const r = formatDecimal(rgbaColor.r, 'rgb')
+      const g = formatDecimal(rgbaColor.g, 'rgb')
+      const b = formatDecimal(rgbaColor.b, 'rgb')
+
+      return `${prefix}(${r}f, ${g}f, ${b}f${rgbaColor.a < 1 ? `, ${rgbaColor.a}f` : ''})`
+    }
     case 'CgColorCmyk': {
       const cmykColor = color.toCmyk()
 

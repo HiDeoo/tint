@@ -22,6 +22,7 @@ const testColors: [SerializedColor, Record<ColorFormatName, string>][] = [
       CgColorCmyk: 'CGColor(genericCMYKCyan: 0, magenta: 0, yellow: 0, black: 1, alpha: 1)',
       SwiftUiHsb: 'Color(hue: 0, saturation: 0, brightness: 0)',
       SwiftUiRgb: 'Color(red: 0, green: 0, blue: 0)',
+      AndroidRgb: 'Color.valueOf(0f, 0f, 0f)',
     },
   ],
   [
@@ -38,6 +39,7 @@ const testColors: [SerializedColor, Record<ColorFormatName, string>][] = [
       CgColorCmyk: 'CGColor(genericCMYKCyan: 0, magenta: 0, yellow: 0, black: 0, alpha: 1)',
       SwiftUiHsb: 'Color(hue: 0, saturation: 0, brightness: 1)',
       SwiftUiRgb: 'Color(red: 1, green: 1, blue: 1)',
+      AndroidRgb: 'Color.valueOf(1f, 1f, 1f)',
     },
   ],
   [
@@ -54,6 +56,7 @@ const testColors: [SerializedColor, Record<ColorFormatName, string>][] = [
       CgColorCmyk: 'CGColor(genericCMYKCyan: 0.15, magenta: 0, yellow: 0, black: 0.19, alpha: 0.5)',
       SwiftUiHsb: 'Color(hue: 0.5, saturation: 0.15, brightness: 0.81, opacity: 0.5)',
       SwiftUiRgb: 'Color(red: 0.69, green: 0.81, blue: 0.81, opacity: 0.5)',
+      AndroidRgb: 'Color.valueOf(0.69f, 0.81f, 0.81f, 0.5f)',
     },
   ],
   [
@@ -70,6 +73,7 @@ const testColors: [SerializedColor, Record<ColorFormatName, string>][] = [
       CgColorCmyk: 'CGColor(genericCMYKCyan: 0.58, magenta: 0, yellow: 0.68, black: 0.17, alpha: 0.33)',
       SwiftUiHsb: 'Color(hue: 0.31, saturation: 0.68, brightness: 0.83, opacity: 0.33)',
       SwiftUiRgb: 'Color(red: 0.35, green: 0.84, blue: 0.27, opacity: 0.33)',
+      AndroidRgb: 'Color.valueOf(0.35f, 0.84f, 0.27f, 0.33f)',
     },
   ],
 ]
