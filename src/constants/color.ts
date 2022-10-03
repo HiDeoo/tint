@@ -10,6 +10,7 @@ export const COLOR_FORMATS = {
   CgColorCmyk: { group: 'Swift', label: 'CGColor CMYK' },
   SwiftUiHsb: { group: 'Swift UI', label: 'HSB' },
   SwiftUiRgb: { group: 'Swift UI', label: 'RGB' },
+  AndroidHex: { group: 'Android', label: 'Hex' },
   AndroidRgb: { group: 'Android', label: 'RGB' },
 }
 

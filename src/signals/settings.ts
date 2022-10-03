@@ -8,4 +8,4 @@ export const settingsCopyAfterPickSignal = signalWithStorage('settingsCopyAfterP
 export const settingsCopySoundSignal = signalWithStorage('settingsCopySound', true)
 
 export const settingsHexLowercaseSignal = signalWithStorage('settingsHexLowercase', true)
-export const settingsHexPrefixSignal = signalWithStorage('settingsHexPrefix', true)
+export const settingsCssHexPrefixSignal = signalWithStorage('settingsHexPrefix', true)

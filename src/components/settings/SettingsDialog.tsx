@@ -11,7 +11,7 @@ import {
   settingsCopySoundSignal,
   settingsDialogOpenedSignal,
   settingsHexLowercaseSignal,
-  settingsHexPrefixSignal,
+  settingsCssHexPrefixSignal,
 } from '@/signals/settings'
 
 export function SettingsDialog() {
@@ -37,14 +37,14 @@ export function SettingsDialog() {
         signal={settingsCopySoundSignal}
       />
       <SignalCheckbox
-        id="settings-hex-prefix"
+        id="settings-css-hex-prefix"
         label={
           <>
             Use <span aria-hidden>#</span>
-            <VisuallyHiddenPrimitive.Root>number sign</VisuallyHiddenPrimitive.Root> prefix for hexadecimal colors
+            <VisuallyHiddenPrimitive.Root>number sign</VisuallyHiddenPrimitive.Root> prefix for CSS hexadecimal colors
           </>
         }
-        signal={settingsHexPrefixSignal}
+        signal={settingsCssHexPrefixSignal}
       />
       <SignalCheckbox
         id="settings-hex-lowercase"

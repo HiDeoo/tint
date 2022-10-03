@@ -5,7 +5,7 @@ import { ColorFormatter } from '@/components/color/toolbar/ColorFormatter'
 import { type ColorFormatName, COLOR_FORMATS } from '@/constants/color'
 import { colorFromSerializedColor, type SerializedColor } from '@/libs/color'
 import { editorFormatSignal } from '@/signals/editor'
-import { settingsHexLowercaseSignal, settingsHexPrefixSignal } from '@/signals/settings'
+import { settingsHexLowercaseSignal, settingsCssHexPrefixSignal } from '@/signals/settings'
 
 const testColors: [SerializedColor, Record<ColorFormatName, string>][] = [
   [
@@ -22,6 +22,7 @@ const testColors: [SerializedColor, Record<ColorFormatName, string>][] = [
       CgColorCmyk: 'CGColor(genericCMYKCyan: 0, magenta: 0, yellow: 0, black: 1, alpha: 1)',
       SwiftUiHsb: 'Color(hue: 0, saturation: 0, brightness: 0)',
       SwiftUiRgb: 'Color(red: 0, green: 0, blue: 0)',
+      AndroidHex: 'Color.valueOf(0xff000000)',
       AndroidRgb: 'Color.valueOf(0f, 0f, 0f)',
     },
   ],
@@ -39,6 +40,7 @@ const testColors: [SerializedColor, Record<ColorFormatName, string>][] = [
       CgColorCmyk: 'CGColor(genericCMYKCyan: 0, magenta: 0, yellow: 0, black: 0, alpha: 1)',
       SwiftUiHsb: 'Color(hue: 0, saturation: 0, brightness: 1)',
       SwiftUiRgb: 'Color(red: 1, green: 1, blue: 1)',
+      AndroidHex: 'Color.valueOf(0xffffffff)',
       AndroidRgb: 'Color.valueOf(1f, 1f, 1f)',
     },
   ],
@@ -56,6 +58,7 @@ const testColors: [SerializedColor, Record<ColorFormatName, string>][] = [
       CgColorCmyk: 'CGColor(genericCMYKCyan: 0.15, magenta: 0, yellow: 0, black: 0.19, alpha: 0.5)',
       SwiftUiHsb: 'Color(hue: 0.5, saturation: 0.15, brightness: 0.81, opacity: 0.5)',
       SwiftUiRgb: 'Color(red: 0.69, green: 0.81, blue: 0.81, opacity: 0.5)',
+      AndroidHex: 'Color.valueOf(0x80afcfcf)',
       AndroidRgb: 'Color.valueOf(0.69f, 0.81f, 0.81f, 0.5f)',
     },
   ],
@@ -73,6 +76,7 @@ const testColors: [SerializedColor, Record<ColorFormatName, string>][] = [
       CgColorCmyk: 'CGColor(genericCMYKCyan: 0.58, magenta: 0, yellow: 0.68, black: 0.17, alpha: 0.33)',
       SwiftUiHsb: 'Color(hue: 0.31, saturation: 0.68, brightness: 0.83, opacity: 0.33)',
       SwiftUiRgb: 'Color(red: 0.35, green: 0.84, blue: 0.27, opacity: 0.33)',
+      AndroidHex: 'Color.valueOf(0x545ad544)',
       AndroidRgb: 'Color.valueOf(0.35f, 0.84f, 0.27f, 0.33f)',
     },
   ],
@@ -80,7 +84,7 @@ const testColors: [SerializedColor, Record<ColorFormatName, string>][] = [
 
 beforeEach(() => {
   settingsHexLowercaseSignal.value = true
-  settingsHexPrefixSignal.value = true
+  settingsCssHexPrefixSignal.value = true
 })
 
 describe.each(testColors)('%o', (color, results) => {
@@ -109,19 +113,32 @@ describe('settings', () => {
     rerender(<ColorFormatter color={color} />)
 
     expect(screen.getByText('#6ABF40')).toBeDefined()
+
+    editorFormatSignal.value = 'AndroidHex'
+    settingsHexLowercaseSignal.value = true
+
+    rerender(<ColorFormatter color={color} />)
+
+    expect(screen.getByText('Color.valueOf(0xff6abf40)')).toBeDefined()
+
+    settingsHexLowercaseSignal.value = false
+
+    rerender(<ColorFormatter color={color} />)
+
+    expect(screen.getByText('Color.valueOf(0xFF6ABF40)')).toBeDefined()
   })
 
-  test('should use # prefix or not for hexadecimal colors', () => {
+  test('should use # prefix or not for CSS hexadecimal colors', () => {
     const color = colorFromSerializedColor({ h: 100, s: 50, l: 50, a: 1 })
 
     editorFormatSignal.value = 'CssHex'
-    settingsHexPrefixSignal.value = true
+    settingsCssHexPrefixSignal.value = true
 
     const { rerender } = render(<ColorFormatter color={color} />)
 
     expect(screen.getByText('#6abf40')).toBeDefined()
 
-    settingsHexPrefixSignal.value = false
+    settingsCssHexPrefixSignal.value = false
 
     rerender(<ColorFormatter color={color} />)
 

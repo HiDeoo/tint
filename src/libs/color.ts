@@ -2,7 +2,7 @@ import { colord, extend, type HslaColor, type Colord, type RgbaColor, getFormat 
 import cmykPlugin from 'colord/plugins/cmyk'
 
 import { type ColorFormatName, COLOR_FORMATS, RGBA_COMPONENT_NAMES } from '@/constants/color'
-import { settingsHexLowercaseSignal, settingsHexPrefixSignal } from '@/signals/settings'
+import { settingsHexLowercaseSignal, settingsCssHexPrefixSignal } from '@/signals/settings'
 
 extend([cmykPlugin])
 
@@ -101,7 +101,7 @@ export function getColorString(color: Color, formatName: ColorFormatName = 'CssH
         hexStr = hexStr.toUpperCase()
       }
 
-      if (useSettings && !settingsHexPrefixSignal.value) {
+      if (useSettings && !settingsCssHexPrefixSignal.value) {
         hexStr = hexStr.replace('#', '')
       }
 
@@ -156,6 +156,27 @@ export function getColorString(color: Color, formatName: ColorFormatName = 'CssH
       const b = formatDecimal(rgbaColor.b, 'rgb')
 
       return `${prefix}(${r}f, ${g}f, ${b}f${rgbaColor.a < 1 ? `, ${rgbaColor.a}f` : ''})`
+    }
+    case 'AndroidHex': {
+      const rgbaColor = color.toRgb()
+      let hexStr = color.toHex()
+
+      hexStr = hexStr.replace('#', '')
+      hexStr = hexStr.slice(0, 6)
+
+      hexStr = `${
+        rgbaColor.a < 1
+          ? `${Math.round(rgbaColor.a * 255)
+              .toString(16)
+              .padStart(2, '0')}`
+          : 'ff'
+      }${hexStr}`
+
+      if (useSettings && !settingsHexLowercaseSignal.value) {
+        hexStr = hexStr.toUpperCase()
+      }
+
+      return `Color.valueOf(0x${hexStr})`
     }
     case 'CgColorCmyk': {
       const cmykColor = color.toCmyk()
