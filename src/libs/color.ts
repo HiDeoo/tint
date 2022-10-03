@@ -80,13 +80,9 @@ export function getColorHslaComponents(color: Color): HslaColor {
 export function getColorString(color: Color, formatName: ColorFormatName = 'CssHsl', useSettings = false): string {
   switch (formatName) {
     case 'CssHsl': {
-      return color
-        .toHslString()
-        .replace(
-          /hsla?\((\d+), (\d+%), (\d+%)(?:, (\d+))?/,
-          (_match, hue, saturation, lightning, alpha) =>
-            `hsl(${hue} ${saturation} ${lightning}${alpha ? ` / ${alpha}` : ''}`
-        )
+      const hslaColor = color.toHsl()
+
+      return `hsl(${hslaColor.h} ${hslaColor.s}% ${hslaColor.l}%${hslaColor.a < 1 ? ` / ${hslaColor.a}` : ''})`
     }
     case 'CssHex': {
       let hexStr = color.toHex()
@@ -102,12 +98,9 @@ export function getColorString(color: Color, formatName: ColorFormatName = 'CssH
       return hexStr
     }
     case 'CssRgb': {
-      return color
-        .toRgbString()
-        .replace(
-          /rgba?\((\d+), (\d+), (\d+)(?:, (\d+))?/,
-          (_match, red, blue, green, alpha) => `rgb(${red} ${blue} ${green}${alpha ? ` / ${alpha}` : ''}`
-        )
+      const rgbaColor = color.toRgb()
+
+      return `rgb(${rgbaColor.r} ${rgbaColor.g} ${rgbaColor.b}${rgbaColor.a < 1 ? ` / ${rgbaColor.a}` : ''})`
     }
     default: {
       throw new Error(`Unsupported color format '${formatName}'.`)
