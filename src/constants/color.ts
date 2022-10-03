@@ -2,6 +2,7 @@ export const COLOR_FORMATS = {
   CssHex: { group: 'CSS', label: 'Hex' },
   CssHsl: { group: 'CSS', label: 'HSL' },
   CssRgb: { group: 'CSS', label: 'RGB' },
+  SwiftAppKitHsb: { group: 'Swift', label: 'NSColor HSB' },
 }
 
 export const GROUPED_COLOR_FORMAT_NAMES: Record<string, ColorFormatName[]> = {}

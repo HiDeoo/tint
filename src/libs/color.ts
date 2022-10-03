@@ -102,6 +102,22 @@ export function getColorString(color: Color, formatName: ColorFormatName = 'CssH
 
       return `rgb(${rgbaColor.r} ${rgbaColor.g} ${rgbaColor.b}${rgbaColor.a < 1 ? ` / ${rgbaColor.a}` : ''})`
     }
+    case 'SwiftAppKitHsb': {
+      const hsbaColor = color.toHsv()
+
+      const formatter = new Intl.NumberFormat('en', {
+        maximumFractionDigits: 2,
+        minimumFractionDigits: 0,
+        style: 'decimal',
+        useGrouping: false,
+      })
+
+      const h = formatter.format(hsbaColor.h / 360)
+      const s = formatter.format(hsbaColor.s / 100)
+      const b = formatter.format(hsbaColor.v / 100)
+
+      return `NSColor(hue: ${h}, saturation: ${s}, brightness: ${b}, alpha: ${hsbaColor.a})`
+    }
     default: {
       throw new Error(`Unsupported color format '${formatName}'.`)
     }

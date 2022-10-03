@@ -14,6 +14,7 @@ const testColors: [SerializedColor, Record<ColorFormatName, string>][] = [
       CssHex: '#000000',
       CssHsl: 'hsl(0 0% 0%)',
       CssRgb: 'rgb(0 0 0)',
+      SwiftAppKitHsb: 'NSColor(hue: 0, saturation: 0, brightness: 0, alpha: 1)',
     },
   ],
   [
@@ -22,6 +23,7 @@ const testColors: [SerializedColor, Record<ColorFormatName, string>][] = [
       CssHex: '#ffffff',
       CssHsl: 'hsl(0 0% 100%)',
       CssRgb: 'rgb(255 255 255)',
+      SwiftAppKitHsb: 'NSColor(hue: 0, saturation: 0, brightness: 1, alpha: 1)',
     },
   ],
   [
@@ -30,6 +32,16 @@ const testColors: [SerializedColor, Record<ColorFormatName, string>][] = [
       CssHex: '#afcfcf80',
       CssHsl: 'hsl(180 25% 75% / 0.5)',
       CssRgb: 'rgb(175 207 207 / 0.5)',
+      SwiftAppKitHsb: 'NSColor(hue: 0.5, saturation: 0.15, brightness: 0.81, alpha: 0.5)',
+    },
+  ],
+  [
+    { h: 111, s: 63, l: 55, a: 0.33 },
+    {
+      CssHex: '#5ad54454',
+      CssHsl: 'hsl(111 63% 55% / 0.33)',
+      CssRgb: 'rgb(90 213 68 / 0.33)',
+      SwiftAppKitHsb: 'NSColor(hue: 0.31, saturation: 0.68, brightness: 0.83, alpha: 0.33)',
     },
   ],
 ]
