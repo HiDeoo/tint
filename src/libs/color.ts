@@ -3,6 +3,13 @@ import { colord, type HslaColor, type Colord, type RgbaColor, getFormat } from '
 import { type ColorFormatName, COLOR_FORMATS, RGBA_COMPONENT_NAMES } from '@/constants/color'
 import { settingsHexLowercaseSignal, settingsHexPrefixSignal } from '@/signals/settings'
 
+const decimalFormatter = new Intl.NumberFormat('en', {
+  maximumFractionDigits: 2,
+  minimumFractionDigits: 0,
+  style: 'decimal',
+  useGrouping: false,
+})
+
 export function colorFromSerializedColor(serializedColor: SerializedColor): Color {
   return colord(serializedColor)
 }
@@ -105,18 +112,20 @@ export function getColorString(color: Color, formatName: ColorFormatName = 'CssH
     case 'SwiftAppKitHsb': {
       const hsbaColor = color.toHsv()
 
-      const formatter = new Intl.NumberFormat('en', {
-        maximumFractionDigits: 2,
-        minimumFractionDigits: 0,
-        style: 'decimal',
-        useGrouping: false,
-      })
-
-      const h = formatter.format(hsbaColor.h / 360)
-      const s = formatter.format(hsbaColor.s / 100)
-      const b = formatter.format(hsbaColor.v / 100)
+      const h = formatDecimal(hsbaColor.h, 'angle')
+      const s = formatDecimal(hsbaColor.s, 'percent')
+      const b = formatDecimal(hsbaColor.v, 'percent')
 
       return `NSColor(hue: ${h}, saturation: ${s}, brightness: ${b}, alpha: ${hsbaColor.a})`
+    }
+    case 'SwiftAppKitRgb': {
+      const rgbaColor = color.toRgb()
+
+      const r = formatDecimal(rgbaColor.r, 'rgb')
+      const g = formatDecimal(rgbaColor.g, 'rgb')
+      const b = formatDecimal(rgbaColor.b, 'rgb')
+
+      return `NSColor(red: ${r}, green: ${g}, blue: ${b}, alpha: ${rgbaColor.a})`
     }
     default: {
       throw new Error(`Unsupported color format '${formatName}'.`)
@@ -139,6 +148,10 @@ export function isEqualSerializedColor(lSerializedColor: SerializedColor, rSeria
 
 function isValidColorFormatName(format: string): format is ColorFormatName {
   return format in COLOR_FORMATS
+}
+
+function formatDecimal(value: number, unit: 'angle' | 'percent' | 'rgb'): string {
+  return decimalFormatter.format(value / (unit === 'angle' ? 360 : unit === 'percent' ? 100 : 255))
 }
 
 export type Color = Colord

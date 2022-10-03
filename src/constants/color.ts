@@ -3,6 +3,7 @@ export const COLOR_FORMATS = {
   CssHsl: { group: 'CSS', label: 'HSL' },
   CssRgb: { group: 'CSS', label: 'RGB' },
   SwiftAppKitHsb: { group: 'Swift', label: 'NSColor HSB' },
+  SwiftAppKitRgb: { group: 'Swift', label: 'NSColor RGB' },
 }
 
 export const GROUPED_COLOR_FORMAT_NAMES: Record<string, ColorFormatName[]> = {}
