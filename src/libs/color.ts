@@ -1,7 +1,10 @@
-import { colord, type HslaColor, type Colord, type RgbaColor, getFormat } from 'colord'
+import { colord, extend, type HslaColor, type Colord, type RgbaColor, getFormat } from 'colord'
+import cmykPlugin from 'colord/plugins/cmyk'
 
 import { type ColorFormatName, COLOR_FORMATS, RGBA_COMPONENT_NAMES } from '@/constants/color'
 import { settingsHexLowercaseSignal, settingsHexPrefixSignal } from '@/signals/settings'
+
+extend([cmykPlugin])
 
 const decimalFormatter = new Intl.NumberFormat('en', {
   maximumFractionDigits: 2,
@@ -144,6 +147,17 @@ export function getColorString(color: Color, formatName: ColorFormatName = 'CssH
 
       return `${prefix}(red: ${r}, green: ${g}, blue: ${b}, alpha: ${rgbaColor.a})`
     }
+    case 'CgColorCmyk': {
+      const cmykColor = color.toCmyk()
+
+      const prefix = getSwiftPrefix(formatName)
+      const c = formatDecimal(cmykColor.c, 'percent')
+      const m = formatDecimal(cmykColor.m, 'percent')
+      const y = formatDecimal(cmykColor.y, 'percent')
+      const b = formatDecimal(cmykColor.k, 'percent')
+
+      return `${prefix}(genericCMYKCyan: ${c}, magenta: ${m}, yellow: ${y}, black: ${b}, alpha: ${cmykColor.a})`
+    }
     default: {
       throw new Error(`Unsupported color format '${formatName}'.`)
     }
@@ -185,7 +199,8 @@ function getSwiftPrefix(formatName: ColorFormatName): string {
     case 'SwiftUiRgb': {
       return 'Color'
     }
-    case 'CgColorRgb': {
+    case 'CgColorRgb':
+    case 'CgColorCmyk': {
       return 'CGColor'
     }
     default: {
