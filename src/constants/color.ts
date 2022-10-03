@@ -6,6 +6,7 @@ export const COLOR_FORMATS = {
   SwiftAppKitRgb: { group: 'Swift', label: 'NSColor RGB' },
   SwiftUiKitHsb: { group: 'Swift', label: 'UIColor HSB' },
   SwiftUiKitRgb: { group: 'Swift', label: 'UIColor RGB' },
+  CgColorRgb: { group: 'Swift', label: 'CGColor RGB' },
   SwiftUiHsb: { group: 'Swift UI', label: 'HSB' },
   SwiftUiRgb: { group: 'Swift UI', label: 'RGB' },
 }

@@ -129,6 +129,7 @@ export function getColorString(color: Color, formatName: ColorFormatName = 'CssH
     }
     case 'SwiftAppKitRgb':
     case 'SwiftUiKitRgb':
+    case 'CgColorRgb':
     case 'SwiftUiRgb': {
       const rgbaColor = color.toRgb()
 
@@ -183,6 +184,9 @@ function getSwiftPrefix(formatName: ColorFormatName): string {
     case 'SwiftUiHsb':
     case 'SwiftUiRgb': {
       return 'Color'
+    }
+    case 'CgColorRgb': {
+      return 'CGColor'
     }
     default: {
       throw new Error(`Unsupported Swift color format '${formatName}'.`)
