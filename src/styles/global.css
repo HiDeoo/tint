@@ -1,17 +1,22 @@
+:root {
+  --selection-color: hsl(221 83% 53%);
+  --pwa-update-selection-color: hsl(32 95% 44%);
+}
+
 ::selection {
-  background: hsl(221 83% 53%);
+  background: var(--selection-color);
 }
 
 ::-moz-selection {
-  background: hsl(221 83% 53%);
+  background: var(--selection-color);
 }
 
 .pwa-update *::selection {
-  background: hsl(32 95% 44%);
+  background: var(--pwa-update-selection-color);
 }
 
 .pwa-update *::-moz-selection {
-  background: hsl(32 95% 44%);
+  background: var(--pwa-update-selection-color);
 }
 
 @media (prefers-reduced-motion: no-preference) {
