@@ -110,26 +110,36 @@ export function getColorString(color: Color, formatName: ColorFormatName = 'CssH
       return `rgb(${rgbaColor.r} ${rgbaColor.g} ${rgbaColor.b}${rgbaColor.a < 1 ? ` / ${rgbaColor.a}` : ''})`
     }
     case 'SwiftAppKitHsb':
-    case 'SwiftUiKitHsb': {
-      const prefix = formatName === 'SwiftAppKitHsb' ? 'NSColor' : 'UIColor'
+    case 'SwiftUiKitHsb':
+    case 'SwiftUiHsb': {
+      const hsvaColor = color.toHsv()
 
-      const hsbaColor = color.toHsv()
+      const prefix = getSwiftPrefix(formatName)
+      const h = formatDecimal(hsvaColor.h, 'angle')
+      const s = formatDecimal(hsvaColor.s, 'percent')
+      const b = formatDecimal(hsvaColor.v, 'percent')
 
-      const h = formatDecimal(hsbaColor.h, 'angle')
-      const s = formatDecimal(hsbaColor.s, 'percent')
-      const b = formatDecimal(hsbaColor.v, 'percent')
+      if (formatName === 'SwiftUiHsb') {
+        return `${prefix}(hue: ${h}, saturation: ${s}, brightness: ${b}${
+          hsvaColor.a < 1 ? `, opacity: ${hsvaColor.a}` : ''
+        })`
+      }
 
-      return `${prefix}(hue: ${h}, saturation: ${s}, brightness: ${b}, alpha: ${hsbaColor.a})`
+      return `${prefix}(hue: ${h}, saturation: ${s}, brightness: ${b}, alpha: ${hsvaColor.a})`
     }
     case 'SwiftAppKitRgb':
-    case 'SwiftUiKitRgb': {
-      const prefix = formatName === 'SwiftAppKitRgb' ? 'NSColor' : 'UIColor'
-
+    case 'SwiftUiKitRgb':
+    case 'SwiftUiRgb': {
       const rgbaColor = color.toRgb()
 
+      const prefix = getSwiftPrefix(formatName)
       const r = formatDecimal(rgbaColor.r, 'rgb')
       const g = formatDecimal(rgbaColor.g, 'rgb')
       const b = formatDecimal(rgbaColor.b, 'rgb')
+
+      if (formatName === 'SwiftUiRgb') {
+        return `${prefix}(red: ${r}, green: ${g}, blue: ${b}${rgbaColor.a < 1 ? `, opacity: ${rgbaColor.a}` : ''})`
+      }
 
       return `${prefix}(red: ${r}, green: ${g}, blue: ${b}, alpha: ${rgbaColor.a})`
     }
@@ -158,6 +168,26 @@ function isValidColorFormatName(format: string): format is ColorFormatName {
 
 function formatDecimal(value: number, unit: 'angle' | 'percent' | 'rgb'): string {
   return decimalFormatter.format(value / (unit === 'angle' ? 360 : unit === 'percent' ? 100 : 255))
+}
+
+function getSwiftPrefix(formatName: ColorFormatName): string {
+  switch (formatName) {
+    case 'SwiftAppKitHsb':
+    case 'SwiftAppKitRgb': {
+      return 'NSColor'
+    }
+    case 'SwiftUiKitHsb':
+    case 'SwiftUiKitRgb': {
+      return 'UIColor'
+    }
+    case 'SwiftUiHsb':
+    case 'SwiftUiRgb': {
+      return 'Color'
+    }
+    default: {
+      throw new Error(`Unsupported Swift color format '${formatName}'.`)
+    }
+  }
 }
 
 export type Color = Colord

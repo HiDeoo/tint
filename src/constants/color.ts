@@ -6,6 +6,8 @@ export const COLOR_FORMATS = {
   SwiftAppKitRgb: { group: 'Swift', label: 'NSColor RGB' },
   SwiftUiKitHsb: { group: 'Swift', label: 'UIColor HSB' },
   SwiftUiKitRgb: { group: 'Swift', label: 'UIColor RGB' },
+  SwiftUiHsb: { group: 'Swift UI', label: 'HSB' },
+  SwiftUiRgb: { group: 'Swift UI', label: 'RGB' },
 }
 
 export const GROUPED_COLOR_FORMAT_NAMES: Record<string, ColorFormatName[]> = {}

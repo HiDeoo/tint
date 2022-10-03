@@ -18,6 +18,8 @@ const testColors: [SerializedColor, Record<ColorFormatName, string>][] = [
       SwiftAppKitRgb: 'NSColor(red: 0, green: 0, blue: 0, alpha: 1)',
       SwiftUiKitHsb: 'UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 1)',
       SwiftUiKitRgb: 'UIColor(red: 0, green: 0, blue: 0, alpha: 1)',
+      SwiftUiHsb: 'Color(hue: 0, saturation: 0, brightness: 0)',
+      SwiftUiRgb: 'Color(red: 0, green: 0, blue: 0)',
     },
   ],
   [
@@ -30,6 +32,8 @@ const testColors: [SerializedColor, Record<ColorFormatName, string>][] = [
       SwiftAppKitRgb: 'NSColor(red: 1, green: 1, blue: 1, alpha: 1)',
       SwiftUiKitHsb: 'UIColor(hue: 0, saturation: 0, brightness: 1, alpha: 1)',
       SwiftUiKitRgb: 'UIColor(red: 1, green: 1, blue: 1, alpha: 1)',
+      SwiftUiHsb: 'Color(hue: 0, saturation: 0, brightness: 1)',
+      SwiftUiRgb: 'Color(red: 1, green: 1, blue: 1)',
     },
   ],
   [
@@ -42,6 +46,8 @@ const testColors: [SerializedColor, Record<ColorFormatName, string>][] = [
       SwiftAppKitRgb: 'NSColor(red: 0.69, green: 0.81, blue: 0.81, alpha: 0.5)',
       SwiftUiKitHsb: 'UIColor(hue: 0.5, saturation: 0.15, brightness: 0.81, alpha: 0.5)',
       SwiftUiKitRgb: 'UIColor(red: 0.69, green: 0.81, blue: 0.81, alpha: 0.5)',
+      SwiftUiHsb: 'Color(hue: 0.5, saturation: 0.15, brightness: 0.81, opacity: 0.5)',
+      SwiftUiRgb: 'Color(red: 0.69, green: 0.81, blue: 0.81, opacity: 0.5)',
     },
   ],
   [
@@ -54,6 +60,8 @@ const testColors: [SerializedColor, Record<ColorFormatName, string>][] = [
       SwiftAppKitRgb: 'NSColor(red: 0.35, green: 0.84, blue: 0.27, alpha: 0.33)',
       SwiftUiKitHsb: 'UIColor(hue: 0.31, saturation: 0.68, brightness: 0.83, alpha: 0.33)',
       SwiftUiKitRgb: 'UIColor(red: 0.35, green: 0.84, blue: 0.27, alpha: 0.33)',
+      SwiftUiHsb: 'Color(hue: 0.31, saturation: 0.68, brightness: 0.83, opacity: 0.33)',
+      SwiftUiRgb: 'Color(red: 0.35, green: 0.84, blue: 0.27, opacity: 0.33)',
     },
   ],
 ]
