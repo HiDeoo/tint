@@ -109,23 +109,29 @@ export function getColorString(color: Color, formatName: ColorFormatName = 'CssH
 
       return `rgb(${rgbaColor.r} ${rgbaColor.g} ${rgbaColor.b}${rgbaColor.a < 1 ? ` / ${rgbaColor.a}` : ''})`
     }
-    case 'SwiftAppKitHsb': {
+    case 'SwiftAppKitHsb':
+    case 'SwiftUiKitHsb': {
+      const prefix = formatName === 'SwiftAppKitHsb' ? 'NSColor' : 'UIColor'
+
       const hsbaColor = color.toHsv()
 
       const h = formatDecimal(hsbaColor.h, 'angle')
       const s = formatDecimal(hsbaColor.s, 'percent')
       const b = formatDecimal(hsbaColor.v, 'percent')
 
-      return `NSColor(hue: ${h}, saturation: ${s}, brightness: ${b}, alpha: ${hsbaColor.a})`
+      return `${prefix}(hue: ${h}, saturation: ${s}, brightness: ${b}, alpha: ${hsbaColor.a})`
     }
-    case 'SwiftAppKitRgb': {
+    case 'SwiftAppKitRgb':
+    case 'SwiftUiKitRgb': {
+      const prefix = formatName === 'SwiftAppKitRgb' ? 'NSColor' : 'UIColor'
+
       const rgbaColor = color.toRgb()
 
       const r = formatDecimal(rgbaColor.r, 'rgb')
       const g = formatDecimal(rgbaColor.g, 'rgb')
       const b = formatDecimal(rgbaColor.b, 'rgb')
 
-      return `NSColor(red: ${r}, green: ${g}, blue: ${b}, alpha: ${rgbaColor.a})`
+      return `${prefix}(red: ${r}, green: ${g}, blue: ${b}, alpha: ${rgbaColor.a})`
     }
     default: {
       throw new Error(`Unsupported color format '${formatName}'.`)
