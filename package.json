@@ -10,7 +10,7 @@
     "dev": "vite",
     "preview": "vite preview",
     "test": "vitest",
-    "lint": "prettier -c . && eslint . --max-warnings=0 && tsc --noEmit",
+    "lint": "prettier -c . && eslint . --cache --max-warnings=0 && tsc --noEmit",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -73,6 +73,6 @@
   "bugs": "https://github.com/HiDeoo/tint/issues",
   "lint-staged": {
     "**/*": "prettier -w -u --cache",
-    "**/*.{js,jsx,ts,tsx,cjs,mjs}": "eslint --max-warnings=0"
+    "**/*.{js,jsx,ts,tsx,cjs,mjs}": "eslint --cache --max-warnings=0"
   }
 }
