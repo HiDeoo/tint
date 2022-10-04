@@ -1,7 +1,7 @@
 import { colord, extend, type HslaColor, type Colord, type RgbaColor, getFormat } from 'colord'
 import cmykPlugin from 'colord/plugins/cmyk'
 
-import { type ColorFormatName, COLOR_FORMATS, RGBA_COMPONENT_NAMES } from '@/constants/color'
+import { type ColorFormatName, RGBA_COMPONENT_NAMES } from '@/constants/color'
 import { settingsHexLowercaseSignal, settingsCssHexPrefixSignal } from '@/signals/settings'
 
 extend([cmykPlugin])
@@ -29,7 +29,7 @@ export function colorFromStringInput(colorStr: string | undefined): Color {
 
   const format: string | undefined = getFormat(colorStr)
 
-  if (!format || !isValidColorFormatName(format)) {
+  if (!format) {
     throw new Error('Invalid color format.')
   }
 
@@ -207,10 +207,6 @@ export function isEqualSerializedColor(lSerializedColor: SerializedColor, rSeria
     lSerializedColor.l === rSerializedColor.l &&
     lSerializedColor.a === rSerializedColor.a
   )
-}
-
-function isValidColorFormatName(format: string): format is ColorFormatName {
-  return format in COLOR_FORMATS
 }
 
 function formatDecimal(value: number, unit: 'angle' | 'percent' | 'rgb'): string {
