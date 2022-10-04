@@ -3,8 +3,10 @@ import { type ColorFormatName } from '@/constants/color'
 import { colorFromString, getSerializedColor } from '@/libs/color'
 import { signalWithStorage } from '@/signals'
 
-// FIXME(HiDeoo) default color
-export const editorColorSignal = signalWithStorage('editorColor', getSerializedColor(colorFromString('#ff00ff')))
+export const editorColorSignal = signalWithStorage(
+  'editorColor',
+  getSerializedColor(colorFromString('hsl(161 94% 30%)'))
+)
 
 export const editorTypeSignal = signalWithStorage<ColorEditorType>('editorType', 'hsla')
 
