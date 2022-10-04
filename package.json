@@ -64,7 +64,13 @@
   "packageManager": "pnpm@7.12.1",
   "private": true,
   "sideEffects": false,
-  "keywords": [],
+  "keywords": [
+    "color",
+    "picker",
+    "editor",
+    "pwa",
+    "EyeDropper"
+  ],
   "homepage": "https://github.com/HiDeoo/tint",
   "repository": {
     "type": "git",
