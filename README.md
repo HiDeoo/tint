@@ -40,6 +40,8 @@ A color picker and editor PWA based on the [EyeDropper Web API](https://develope
 - Multiple export formats _(e.g. CSS Hex, CSS RGB & HSL, Swift UIColor, Android Color, etc.)_
 - Exported color history
 
+Available on [tint-app.vercel.app](https://tint-app.vercel.app).
+
 Built with Vite, TypeScript, React, Tailwind CSS, and Preact Signals.
 
 ## License
