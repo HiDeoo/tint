@@ -23,7 +23,7 @@ export function ColorPicker({ color, onPick }: ColorPickerProps) {
   return (
     <button
       className={clsx(
-        'hover:(ring-2.5) relative mb-2 h-32 w-full overflow-hidden rounded-md border-2 border-zinc-800',
+        'hover:(ring-2.5) border-1 relative mb-2 h-32 w-full overflow-hidden rounded-md border-zinc-700/50',
         'focus-visible:(ring-2.5) outline-none ring-blue-600 ring-offset-2 ring-offset-zinc-900'
       )}
       onClick={handleClick}
