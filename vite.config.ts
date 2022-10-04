@@ -46,7 +46,10 @@ export default defineConfig({
     VitePWA({
       includeAssets: ['images/**/*.{ico,png,svg}', 'sounds/*.webm'],
       manifest: {
-        description: '// TODO',
+        background_color: '#18181b',
+        categories: ['productivity', 'utilities'],
+        description: 'Color Picker and Editor PWA',
+        display: 'standalone',
         icons: [
           {
             purpose: 'any',
@@ -85,9 +88,13 @@ export default defineConfig({
             type: 'image/png',
           },
         ],
-        name: '// TODO',
-        short_name: '// TODO',
-        theme_color: '// TODO',
+        id: '/',
+        lang: 'en',
+        name: 'Tint',
+        scope: '/',
+        short_name: 'Tint',
+        start_url: '/',
+        theme_color: '#18181b',
       },
     }),
   ],

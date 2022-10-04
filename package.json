@@ -2,7 +2,7 @@
   "name": "tint",
   "version": "0.0.1",
   "license": "MIT",
-  "description": "",
+  "description": "Color Picker and Editor PWA",
   "author": "HiDeoo <github@hideoo.dev> (https://hideoo.dev)",
   "type": "module",
   "scripts": {
