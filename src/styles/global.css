@@ -1,0 +1,26 @@
+:root {
+  --selection-color: hsl(221 83% 53%);
+  --pwa-update-selection-color: hsl(32 95% 44%);
+}
+
+::selection {
+  background: var(--selection-color);
+}
+
+::-moz-selection {
+  background: var(--selection-color);
+}
+
+.pwa-update *::selection {
+  background: var(--pwa-update-selection-color);
+}
+
+.pwa-update *::-moz-selection {
+  background: var(--pwa-update-selection-color);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .toast[data-swipe='move'] {
+    transform: translateX(var(--radix-toast-swipe-move-x)) !important;
+  }
+}
