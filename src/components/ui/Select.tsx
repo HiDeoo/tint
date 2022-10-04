@@ -17,7 +17,7 @@ export function Select<TItem extends string>({
       <SelectPrimitive.Trigger
         aria-label={triggerLabel}
         className={clsx(
-          'flex items-center gap-5 rounded-md bg-zinc-700/75 py-2.5 pl-3.5 pr-3 hover:bg-zinc-700',
+          'flex shrink-0 items-center gap-5 rounded-md bg-zinc-700/75 py-2.5 pl-3.5 pr-3 hover:bg-zinc-700',
           'focus-visible:(ring-2 outline-none) ring-blue-600 ring-offset-2 ring-offset-zinc-900'
         )}
       >
