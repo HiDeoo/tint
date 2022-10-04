@@ -5,7 +5,7 @@ specifiers:
   '@hideoo/eslint-config': 0.9.0
   '@hideoo/prettier-config': 0.1.1
   '@hideoo/tsconfig': 0.1.0
-  '@preact/signals-react': 1.1.0
+  '@preact/signals-react': 1.1.1
   '@radix-ui/react-checkbox': 1.0.0
   '@radix-ui/react-dialog': 1.0.0
   '@radix-ui/react-icons': 1.1.1
@@ -44,7 +44,7 @@ specifiers:
   workbox-window: 6.5.4
 
 dependencies:
-  '@preact/signals-react': 1.1.0_react@18.2.0
+  '@preact/signals-react': 1.1.1_react@18.2.0
   '@radix-ui/react-checkbox': 1.0.0_biqbaboplfbrettd7655fr4n2y
   '@radix-ui/react-dialog': 1.0.0_7ey2zzynotv32rpkwno45fsx4e
   '@radix-ui/react-icons': 1.1.1_react@18.2.0
@@ -1557,16 +1557,16 @@ packages:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
 
-  /@preact/signals-core/1.2.0:
-    resolution: {integrity: sha512-GBjq/8WJkh/aenrEMvWIOr1lRfu6nb25er0m6r+4qVqKC85mXAYIbGHnoHTooNXCKxn2KEMUrATvN54MdMHE1A==}
+  /@preact/signals-core/1.2.1:
+    resolution: {integrity: sha512-aqzRMNFU1hoQyP4Kb1ldJrUTCnA9vqPDa7qHEQzHJ3upnBOcC2pjmvjAuTqGuY4AVTtUkCQV0FvOCuIQQ2hSdA==}
     dev: false
 
-  /@preact/signals-react/1.1.0_react@18.2.0:
-    resolution: {integrity: sha512-2EY5F9qxeCmm9pFsyw0/HHxbADm0sKh6rMpvpiZiaDsTmpJFW3FmKE7bPsUP7bqhmQTSrboN9RHrjpE4seGqIA==}
+  /@preact/signals-react/1.1.1_react@18.2.0:
+    resolution: {integrity: sha512-U5HNWBt4q5pmsZjDOuVcz3OXLQtaBMMSErnTHFohOFQClBqHlVD/hmhayEEO38I9iU71kofhw2ngeWso/GsVMw==}
     peerDependencies:
       react: 17.x || 18.x
     dependencies:
-      '@preact/signals-core': 1.2.0
+      '@preact/signals-core': 1.2.1
       react: 18.2.0
     dev: false
 
