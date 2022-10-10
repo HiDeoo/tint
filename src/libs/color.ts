@@ -30,6 +30,10 @@ export function colorFromStringInput(colorStr: string | undefined): Color {
   const format: string | undefined = getFormat(colorStr)
 
   if (!format) {
+    if (/^[\da-f]{3,8}$/i.test(colorStr)) {
+      return colorFromStringInput(`#${colorStr}`)
+    }
+
     throw new Error('Invalid color format.')
   }
 
