@@ -59,7 +59,7 @@
     "workbox-window": "6.5.4"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
   "packageManager": "pnpm@7.12.1",
   "private": true,
